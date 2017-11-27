@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Como generar &#34;fake data&#34; en nuestros tests de aceptación | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="En la gran mayoría de nuestros tests necesitamos de forma habitual información de relleno para setear todos los valores demandados en cada paso. Suele ser información obligatoria para poder invocar a">
+<meta name="keywords" content="javascript,nodejs,testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Como generar &quot;fake data&quot; en nuestros tests de aceptación">
+<meta property="og:url" content="http://programmeratwork.com/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="En la gran mayoría de nuestros tests necesitamos de forma habitual información de relleno para setear todos los valores demandados en cada paso. Suele ser información obligatoria para poder invocar a">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2017-09-07T16:13:00.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Como generar &quot;fake data&quot; en nuestros tests de aceptación">
+<meta name="twitter:description" content="En la gran mayoría de nuestros tests necesitamos de forma habitual información de relleno para setear todos los valores demandados en cada paso. Suele ser información obligatoria para poder invocar a">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+          <a class="main-nav-link" href="/links">enlaces</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+      <div class="outer">
+        <section id="main"><article id="post-Como-generar-fake-data-en-nuestros-tests-de-aceptacion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/" class="article-date">
+  <time datetime="2017-09-06T13:31:55.000Z" itemprop="datePublished">06/09/2017</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Como generar &#34;fake data&#34; en nuestros tests de aceptación
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>En la gran mayoría de nuestros tests necesitamos de forma habitual información de relleno para setear todos los valores demandados en cada paso. Suele ser información obligatoria para poder invocar a los métodos que testeamos, pero tiene una importancia más bien relativa para el resultado final. En cualquier caso, estar siempre pasando valores a piño fijo como <code>prueba</code> o <code>lorem ipsum</code>, no nos beneficia en nada al no poder ver en detalle el efecto producido ante datos de valor variable y más o menos reales (sobretodo cuando estamos actuando desde el interfaz de usuario).</p>
+<a id="more"></a>
+<p>Para este tipo de escenarios, y de forma más concreta para nuestros tests de aceptación que ejercitan el interfaz de usuario de una forma “automatizada”, soluciones como <a href="https://github.com/Marak/Faker.js" target="_blank" rel="external">faker</a> pueden hacernos la vida mucho más sencilla.</p>
+<p><a href="https://github.com/Marak/Faker.js" target="_blank" rel="external">faker</a> no es más que una API que genera valores “fake” o “dummy” o falsos para nuestra aplicación y que realiza esta generación en base a una serie de entidades de datos que soporta (direcciones, fechas, empresas, teléfonos, …) o simplemente de forma aleatoria (números, letras, palabras, UUIDs, …).</p>
+<p>En <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="external">JavaScript</a> disponemos de un paquete <a href="https://www.npmjs.com" target="_blank" rel="external">NPM</a> con el que realizar las llamadas y obtener los valores “fake”. Para ello sólo debemos instalarlo ejecutando el siguiente comando:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev faker</div></pre></td></tr></table></figure>
+<p>Una vez instalado, podemos importar <a href="https://github.com/Marak/Faker.js" target="_blank" rel="external">faker</a> en uno de nuestros proyectos y comenzar a recuperar valores de prueba:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> faker <span class="keyword">from</span> <span class="string">'faker'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> name = faker.name.findName();</div><div class="line"><span class="keyword">let</span> email = faker.internet.email();</div></pre></td></tr></table></figure>
+<p>Para la lista completa de todas las entidades disponibles y los valores expuestos para cada una, deberemos consultar la <a href="https://github.com/Marak/Faker.js" target="_blank" rel="external">documentación del proyecto</a>. En cualquier caso, es sorprendentemente completa.</p>
+<blockquote>
+<p>[<strong>TIP</strong>]: Nunca utilices librerias de terceros de forma directa en tu código. Crea siempre un “wrapper” que te proteja!!</p>
+</blockquote>
+<p>Como nota final y ya que esta es una librería “no controlada” por nosotros que se va a integrar en nuestro código de test, seguiremos siempre la máxima de hacer un “wrapper” de la libreria y exponer sólo la parte que vamos a utilizar, permitiendo así su sustitución por otra que nos guste más en el futuro o por un doble de test en el caso de ser necesario.</p>
+<p>Un ejemplo de este tipo de “wrapper” podría ser el siguiente, en el que podemos ver cómo de una forma semántica exponemos únicamente los métodos de <a href="https://github.com/Marak/Faker.js" target="_blank" rel="external">faker</a> que son necesarios:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> faker <span class="keyword">from</span> <span class="string">'faker'</span>;</div><div class="line"></div><div class="line">faker.locale = <span class="string">'es'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    getCompanyName: <span class="function"><span class="params">()</span> =&gt;</span> faker.company.companyName(),</div><div class="line">    getCompanyCif: <span class="function"><span class="params">()</span> =&gt;</span> faker.random.number(),</div><div class="line">    getUserMail: <span class="function"><span class="params">()</span> =&gt;</span> faker.internet.email(),</div><div class="line">    getUserPassword: <span class="function"><span class="params">()</span> =&gt;</span> faker.internet.password(),</div><div class="line">    getRoleName: <span class="function"><span class="params">()</span> =&gt;</span> faker.name.jobType(),</div><div class="line">    getWorkCenterName: <span class="function"><span class="params">()</span> =&gt;</span> faker.address.streetName(),</div><div class="line">    getWorkCenterStreetAddress: <span class="function"><span class="params">()</span> =&gt;</span> faker.address.streetAddress(),</div><div class="line">    getWorkCenterZipCode: <span class="function"><span class="params">()</span> =&gt;</span> faker.address.zipCode(),</div><div class="line">    getWorkCenterPhone: <span class="function"><span class="params">()</span> =&gt;</span> faker.phone.phoneNumber()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Posteriormente, a la hora de usar este “wrapper” en nuestro código de test, sólo tendríamos que importar el módulo creado y llamar los métodos expuestos. A continuación os dejo un ejemplo de cómo hacerlo utilizando <a href="http://nightwatchjs.org/" target="_blank" rel="external">nightwatch</a> como herramienta para la creación de tests de aceptación (de ahí la sintaxis especial de los tests definidos):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> SupportApp <span class="keyword">from</span> <span class="string">'../src/support'</span>;</div><div class="line"><span class="keyword">import</span> fakeData <span class="keyword">from</span> <span class="string">'../src/fake'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  beforeEach: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    name = fakeData.getWorkCenterName();</div><div class="line">    streetAddress = fakeData.getWorkCenterStreetAddress();</div><div class="line">    zipCode = fakeData.getWorkCenterZipCode();</div><div class="line">    phone = fakeData.getWorkCenterPhone();</div><div class="line">  &#125;,    </div><div class="line">  </div><div class="line">  <span class="string">'should be able to create a work center'</span>: <span class="function">(<span class="params">client</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">new</span> SupportApp(client)</div><div class="line">      .navigateToWorkCentersAdmin()</div><div class="line">      .addWorkCenter(name, streetAddress, zipCode, phone)</div><div class="line">      .run();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Como podéis ver, enfocar nuestros tests de aceptación aprovechando la potencia del patrón <a href="https://martinfowler.com/bliki/PageObject.html" target="_blank" rel="external">Page Object</a> puede ser también muy interesante y semántico … Aunque esa es otra historia :)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/" data-id="cja286ebs00046wd3gxgutpm7" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testing/">testing</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Siguiente</strong>
+      <div class="article-nav-title">
+        
+          Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+
+      <div>
+          <div class="banner">
+            <a href="mailto:borillo@gmail.com">¿Necesitas ayuda o formación técnica personalizada? Hablemos :)</a>
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/26/Taller-de-React-ES6-y-webpack-en-el-Codemotion-2015/">Taller de React, ES6 y Webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/">Gestión eficiente de tus instalaciones de NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+    <a href="/links" class="mobile-nav-link">enlaces</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

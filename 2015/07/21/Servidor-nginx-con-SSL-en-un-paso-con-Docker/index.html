@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Servidor nginx con SSL en un paso con Docker | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="Para los que aún no habéis comenzado a utilizar Docker, os recomiendo revisar la guía oficial Understanding Docker, así como el manual de instalación.">
+<meta name="keywords" content="docker,nginx,ssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servidor nginx con SSL en un paso con Docker">
+<meta property="og:url" content="http://programmeratwork.com/2015/07/21/Servidor-nginx-con-SSL-en-un-paso-con-Docker/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Para los que aún no habéis comenzado a utilizar Docker, os recomiendo revisar la guía oficial Understanding Docker, así como el manual de instalación.">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2017-09-01T13:24:58.636Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servidor nginx con SSL en un paso con Docker">
+<meta name="twitter:description" content="Para los que aún no habéis comenzado a utilizar Docker, os recomiendo revisar la guía oficial Understanding Docker, así como el manual de instalación.">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+          <a class="main-nav-link" href="/links">enlaces</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+      <div class="outer">
+        <section id="main"><article id="post-Servidor-nginx-con-SSL-en-un-paso-con-Docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/21/Servidor-nginx-con-SSL-en-un-paso-con-Docker/" class="article-date">
+  <time datetime="2015-07-20T22:00:00.000Z" itemprop="datePublished">21/07/2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Servidor nginx con SSL en un paso con Docker
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Para los que aún no habéis comenzado a utilizar <a href="https://www.docker.com/" target="_blank" rel="external">Docker</a>, os recomiendo revisar la guía oficial <a href="https://docs.docker.com/introduction/understanding-docker/" target="_blank" rel="external">Understanding Docker</a>, así como el <a href="https://docs.docker.com/installation/ubuntulinux/#installation" target="_blank" rel="external">manual de instalación</a>.</p>
+<a id="more"></a>
+<blockquote>
+<p>Docker allows you to package an application with all of its dependencies into a standardized unit for software development.</p>
+</blockquote>
+<p>Si todo está apunto en tu entorno, podrás ejecutar sin problema comandos como <code>docker version</code>, obteniendo algo similar a esto:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ docker version</div><div class="line">Client version: 1.7.1</div><div class="line">Client API version: 1.19</div><div class="line">Go version (client): go1.4.2</div><div class="line">Git commit (client): 786b29d</div><div class="line">OS/Arch (client): linux/amd64</div><div class="line">Server version: 1.7.1</div><div class="line">Server API version: 1.19</div><div class="line">Go version (server): go1.4.2</div><div class="line">Git commit (server): 786b29d</div><div class="line">OS/Arch (server): linux/amd64</div></pre></td></tr></table></figure>
+<h2 id="Servidor-HTTP-basico"><a href="#Servidor-HTTP-basico" class="headerlink" title="Servidor HTTP básico"></a>Servidor HTTP básico</h2><blockquote>
+<p>nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP proxy server</p>
+</blockquote>
+<p>Como paso inicial, si queremos levantar un contenedor que corra el servicio HTTP de <a href="http://nginx.org/en/" target="_blank" rel="external">nginx</a>, sólo tenemos que crear un fichero de configuración y especificar allí los detalles de nuestro virtualhost (por ejemplo en el fichero <code>sample.conf</code>):</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">   <span class="attribute">listen</span>        <span class="number">80</span>;</div><div class="line">   <span class="attribute">server_name</span>   tunombrededominio.com;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Esta es toda la configuración que tenemos que hacer!! Sólo queda pues, arrancar el contenedor con <code>docker run</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -p 80:80  \</div><div class="line">   -v /var/www/html:/usr/share/nginx/html \</div><div class="line">   -v <span class="variable">$PWD</span>/sample.conf:/etc/nginx/conf.d/sample.conf \</div><div class="line">   -d nginx</div></pre></td></tr></table></figure>
+<p>Hay que tener en cuenta que con la opción <code>-p</code>, mapeamos el puerto 80 del contender al 80 local y con los <code>-v</code> permitimos que ciertos directorios/ficheros locales se mapeen internamente a las rutas correspondientes en el contenedor. Finalmente, el <code>-d</code> lanza nuestro proceso como daemon, es decir, en segundo plano.</p>
+<h2 id="Configuracion-SSL"><a href="#Configuracion-SSL" class="headerlink" title="Configuración SSL"></a>Configuración SSL</h2><p>Antes de activar la configuración SSL en <a href="http://nginx.org/en/" target="_blank" rel="external">nginx</a>, necesitamos contar con un certificado/key SSL para nuestro servidor (<code>server.key</code> y <code>server.pem</code>). </p>
+<blockquote>
+<p>A partir de septiembre, podremos contar con certificados gratuitos gracias a <a href="https://letsencrypt.org/" target="_blank" rel="external">Let’s Encrypt</a>.</p>
+</blockquote>
+<p>Para poder utilizarlos, copiaremos ambos ficheros en el directorio <code>certs</code>, alterando posteriormente la configuración del virtualhost:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">   <span class="attribute">listen</span>              <span class="number">80</span>;</div><div class="line">   <span class="attribute">listen</span>              <span class="number">443</span> ssl;</div><div class="line">   <span class="attribute">server_name</span>         tunombrededominio.com;</div><div class="line">   <span class="attribute">ssl_certificate</span>     /certs/server.pem;</div><div class="line">   <span class="attribute">ssl_certificate_key</span> /certs/server.key;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Como en el ejemplo anterior, ya sólo nos queda lanzar de nuevo el contenedor y tendremos el servicio activo (recuerda matar el anterior con <code>docker kill &lt;id contenedor&gt;</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker run -p 80:80 -p 443:443 \</div><div class="line">   -v /var/www/html:/usr/share/nginx/html \</div><div class="line">   -v <span class="variable">$PWD</span>/sample.conf:/etc/nginx/conf.d/sample.conf \</div><div class="line">   -v <span class="variable">$PWD</span>/certs:/certs \</div><div class="line">   -d nginx</div></pre></td></tr></table></figure>
+<p>Como podemos ver en el comando anterior, al tener el SSL activo, tendremos que redireccionar también el puerto 443 y compartir igualmente el directorio de certificados para poderlo referenciar sin problema en la configuración.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2015/07/21/Servidor-nginx-con-SSL-en-un-paso-con-Docker/" data-id="cja286ec0000g6wd39nfqubw3" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssl/">ssl</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Siguiente</strong>
+      <div class="article-nav-title">
+        
+          Gestión eficiente de tus instalaciones de NodeJS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/19/Construccion-de-proyectos-simple-con-NPM/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Construcción de proyectos simple con NPM</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+
+      <div>
+          <div class="banner">
+            <a href="mailto:borillo@gmail.com">¿Necesitas ayuda o formación técnica personalizada? Hablemos :)</a>
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/26/Taller-de-React-ES6-y-webpack-en-el-Codemotion-2015/">Taller de React, ES6 y Webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/">Gestión eficiente de tus instalaciones de NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+    <a href="/links" class="mobile-nav-link">enlaces</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

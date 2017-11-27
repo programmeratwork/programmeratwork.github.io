@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Construcción efectiva con Gulp: Parte 3 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="Finalizamos esta serie con el tercero de los artículos dedicado a Gulp, hablando de otras consideraciones que debemos tener cuando utilizamos Gulp. No olvides revisar el primer capítulo de introducció">
+<meta name="keywords" content="javascript,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Construcción efectiva con Gulp: Parte 3">
+<meta property="og:url" content="http://programmeratwork.com/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Finalizamos esta serie con el tercero de los artículos dedicado a Gulp, hablando de otras consideraciones que debemos tener cuando utilizamos Gulp. No olvides revisar el primer capítulo de introducció">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2017-09-01T13:35:03.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Construcción efectiva con Gulp: Parte 3">
+<meta name="twitter:description" content="Finalizamos esta serie con el tercero de los artículos dedicado a Gulp, hablando de otras consideraciones que debemos tener cuando utilizamos Gulp. No olvides revisar el primer capítulo de introducció">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+          <a class="main-nav-link" href="/links">enlaces</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+      <div class="outer">
+        <section id="main"><article id="post-Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/" class="article-date">
+  <time datetime="2014-12-08T23:00:00.000Z" itemprop="datePublished">09/12/2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Construcción efectiva con Gulp: Parte 3
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Finalizamos esta serie con el tercero de los artículos dedicado a <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>, hablando de otras consideraciones que debemos tener cuando utilizamos <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>. No olvides revisar el primer capítulo de <a href="/2014/11/13/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-1/">introducción</a> o segundo sobre <a href="/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/">plugins para mejorar el flujo de trabajo</a>.</p>
+<a id="more"></a>
+<h2 id="Otras-consideraciones-de-uso"><a href="#Otras-consideraciones-de-uso" class="headerlink" title="Otras consideraciones de uso"></a>Otras consideraciones de uso</h2><h3 id="Carga-de-plugins-desde-el-package-json"><a href="#Carga-de-plugins-desde-el-package-json" class="headerlink" title="Carga de plugins desde el package.json"></a>Carga de plugins desde el package.json</h3><p>Resulta bastante incómodo ver aumentar la parte de definición de variables para cada módulo que queremos usar de <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>, ya que nuestros scripts pueden comenzar a ser difíciles de leer:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> coffee = <span class="built_in">require</span>(<span class="string">'gulp-coffee'</span>);</div><div class="line"><span class="keyword">var</span> es = <span class="built_in">require</span>(<span class="string">'event-stream'</span>);</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<p>Una forma de solucionar esta situación es mediante el uso del módulo <code>gulp-load-plugins</code>, el cual permite hacer referencia a cualquier módulo configurado en nuestro <code>package.json</code> sin necesidad de declarar una variable.</p>
+<p>Para ello, el primer paso es instalar la dependencia:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-load-plugins --save-dev</div></pre></td></tr></table></figure>
+<p>Posteriormente, debemos asegurarnos de que los módulos a utilizar se encuentran instalados y disponibles en nuestro <code>package.json</code>:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   <span class="attr">"name"</span>: <span class="string">"load-plugins"</span>,</div><div class="line">   <span class="attr">"version"</span>: <span class="string">"0.0.0"</span>,</div><div class="line">   <span class="attr">"devDependencies"</span>: &#123;</div><div class="line">      <span class="attr">"gulp"</span>: <span class="string">"~3.8.7"</span>,</div><div class="line">      <span class="attr">"gulp-uglify"</span>: <span class="string">"~0.3.1"</span>,</div><div class="line">      <span class="attr">"gulp-concat"</span>: <span class="string">"~2.3.4"</span>,</div><div class="line">      <span class="attr">"gulp-load-plugins"</span>: <span class="string">"~0.5.3"</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Con todas las dependencias listas y partiendo de un ejemplo que utilice alguna de ellas:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'js/*.js'</span>)</div><div class="line">       .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">       .pipe(uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Podemos pasar a un ejemplo equivalente utilizando <code>gulp-load-plugins</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    plugins = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)();</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'js/*.js'</span>)</div><div class="line">       .pipe(plugins.concat(<span class="string">'all.min.js'</span>))</div><div class="line">       .pipe(plugins.uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>En este ejemplo más reducido puede parecer que no se simplifica demasiado el fichero de construcción, pero en proyectos con muchas más transformaciones la mejora se hace realmente evidente. Además, la versión <code>0.0.4</code> de <code>gulp-load-plugins</code> ha añadido la carga lazy de los módulos, lo cual mejora bastante el rendimiento de esta solución.</p>
+<h3 id="Reutilizacion-de-partes-del-flujo-de-construccion"><a href="#Reutilizacion-de-partes-del-flujo-de-construccion" class="headerlink" title="Reutilización de partes del flujo de construcción"></a>Reutilización de partes del flujo de construcción</h3><p>En ocasiones, ocurre que dos tipos de procesamientos distintos acaban teniendo una parte común en el flujo de transformación. Es el ejemplo del procesamiento de ficheros <code>JavaScript</code> y de <code>CoffeeScript</code>. Ambos deben ser minificados y concatenados, pero además, los ficheros <code>CoffeeScript</code> deben pre-procesarse para generar <code>JavaScript</code>.</p>
+<p>Si atacamos esta problemática por separado, las acciones a realizar tendrían que ser de la forma:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> coffee = <span class="built_in">require</span>(<span class="string">'gulp-coffee'</span>);</div><div class="line"><span class="keyword">var</span> gulpif = <span class="built_in">require</span>(<span class="string">'gulp-if'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'coffeescript'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'coffee/*.coffee'</span>)</div><div class="line">       .pipe(coffee())</div><div class="line">       .pipe(uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'coffeescript'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'js/*.js'</span>)</div><div class="line">       .pipe(uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Como podemos ver, estas dos tareas comparten gran parte de la definición del flujo. Para poder reaprovechar estas definiciones y no duplicar código, tenemos dos opciones.</p>
+<p>La primera es combinarlas haciendo uso de un módulo llamado <code>gulp-if</code>. Pare ello lo podemos instalar con:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-if --save-dev</div></pre></td></tr></table></figure>
+<p>Y luego podemos partir de un GLOB que incluya tanto los ficheros <code>JavaScript</code> como <code>CoffeeScript</code> y aplicar sólo la compilación de los ficheros <code>.coffee</code> mediante <code>gulp-if</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> coffee = <span class="built_in">require</span>(<span class="string">'gulp-coffee'</span>);</div><div class="line"><span class="keyword">var</span> gulpif = <span class="built_in">require</span>(<span class="string">'gulp-if'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src([<span class="string">'js/*.js'</span>, <span class="string">'coffee/*.coffee'</span>])</div><div class="line">       .pipe(gulpif(<span class="regexp">/[.]coffee$/</span>, coffee()))</div><div class="line">       .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">       .pipe(uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Como ejemplo adicional, hay algunas veces en las que puede resultar interesante consultar el <code>NODE_ENV</code> (variable de entorno que nos dice si estamos en “production” o “development”) a la hora de generar los ficheros minificados o legibles y “bonitos” para simplificar su depuración.</p>
+<p>Para ello debemos instalar el módulo <code>gulp-beautify</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-beautify --save-dev</div></pre></td></tr></table></figure>
+<p>Y modificiar nuestro <code>gulpfile.js</code> con la siguiente configuración:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> beautify = <span class="built_in">require</span>(<span class="string">'gulp-beautify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> gulpif = <span class="built_in">require</span>(<span class="string">'gulp-if'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'js/*.js'</span>)</div><div class="line">       .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">       .pipe(gulpif(process.env.NODE_ENV === <span class="string">'production'</span>, uglify()))</div><div class="line">       .pipe(gulpif(process.env.NODE_ENV !== <span class="string">'production'</span>, beautify()))</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Con respecto a la segunda estrategia de la que hablábamos a la hora de compartir partes del flujo de construcción de una forma más orientada a streams, podemos hacer uso del módulo de <code>event-stream</code>. Lo primero es siempre instalar dicho módulo:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install event-stream --save-dev</div></pre></td></tr></table></figure>
+<p>De forma que ya podemos modificar nuestro ejemplo para reutilizar las partes comunes de ambos procesos:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> coffee = <span class="built_in">require</span>(<span class="string">'gulp-coffee'</span>);</div><div class="line"><span class="keyword">var</span> es = <span class="built_in">require</span>(<span class="string">'event-stream'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> coffeeFiles = gulp.src(<span class="string">'coffee/*.coffee'</span>)</div><div class="line">                         .pipe(coffee());</div><div class="line"></div><div class="line">   <span class="keyword">var</span> jsFiles = gulp.src(<span class="string">'js/*.js'</span>);</div><div class="line"></div><div class="line">   <span class="keyword">return</span> es.merge(coffeeFiles, jsFiles)</div><div class="line">            .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">            .pipe(uglify())</div><div class="line">            .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="Referencias"><a href="#Referencias" class="headerlink" title="Referencias"></a>Referencias</h1><p>Puedes encontrar todos los ejemplos utilizados en este artículo en <a href="https://github.com/programmeratwork/articles-examples/tree/master/gulp" target="_blank" rel="external">el repositorio de ejemplos de Programmer At Work</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/" data-id="cja286ec2000i6wd3fixfhivm" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/11/Reduciendo-el-lag-de-las-aplicaciones-HTML5-en-movil/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Siguiente</strong>
+      <div class="article-nav-title">
+        
+          Reduciendo el lag de las aplicaciones HTML5 en móvil
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Construcción efectiva con Gulp: Parte 2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+
+      <div>
+          <div class="banner">
+            <a href="mailto:borillo@gmail.com">¿Necesitas ayuda o formación técnica personalizada? Hablemos :)</a>
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/26/Taller-de-React-ES6-y-webpack-en-el-Codemotion-2015/">Taller de React, ES6 y Webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/">Gestión eficiente de tus instalaciones de NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+    <a href="/links" class="mobile-nav-link">enlaces</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

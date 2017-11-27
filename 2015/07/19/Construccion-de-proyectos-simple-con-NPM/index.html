@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Construcción de proyectos simple con NPM | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser Gulp o Grunt, el uso de la sección de scripts de N">
+<meta name="keywords" content="javascript,npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Construcción de proyectos simple con NPM">
+<meta property="og:url" content="http://programmeratwork.com/2015/07/19/Construccion-de-proyectos-simple-con-NPM/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser Gulp o Grunt, el uso de la sección de scripts de N">
+<meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2017-09-01T12:46:04.460Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Construcción de proyectos simple con NPM">
+<meta name="twitter:description" content="En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser Gulp o Grunt, el uso de la sección de scripts de N">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+          <a class="main-nav-link" href="/links">enlaces</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+      <div class="outer">
+        <section id="main"><article id="post-Construccion-de-proyectos-simple-con-NPM" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/19/Construccion-de-proyectos-simple-con-NPM/" class="article-date">
+  <time datetime="2015-07-18T22:00:00.000Z" itemprop="datePublished">19/07/2015</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Construcción de proyectos simple con NPM
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser <a href="http://programmeratwork.com/blog/2014/11/13/construccion-efectiva-en-javascript-con-gulp-1/">Gulp</a> o <a href="http://gruntjs.com/" target="_blank" rel="external">Grunt</a>, el uso de la sección de scripts de <a href="https://www.npmjs.com/" target="_blank" rel="external">NPM</a> constituye una apuesta por la simplicidad.</p>
+<a id="more"></a>
+<p>Si inicializamos un proyecto nuevo con <a href="https://www.npmjs.com/" target="_blank" rel="external">NPM</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm -v</div><div class="line">npm init</div></pre></td></tr></table></figure>
+<p>Podremos editar el <code>package.json</code> generado con el fin de asociar comandos concretos a determinados identificadores de acción:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   <span class="attr">"name"</span>: <span class="string">"miproyecto"</span>,</div><div class="line">   <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">   <span class="attr">"scripts"</span>: &#123;</div><div class="line">      <span class="attr">"clean"</span>: <span class="string">"rm -rf build"</span></div><div class="line">   &#125;,</div><div class="line">   <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">   <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Dentro de cada acción definida, podemos invocar tanto scripts propios como comandos del sistema operativo.</p>
+<p>La practica habitual, es aprovechar los comandos del sistema y complementarlos con otros más especializados que no son más que <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-globally" target="_blank" rel="external">módulos NPM instalados globalmente</a> que exponen ciertos comandos.</p>
+<p>Un ejemplo puede ser la herramienta de chequeo de sintaxis para JavaScript <a href="http://eslint.org/" target="_blank" rel="external">EsLint</a>, la cual se puede instalar globalmente:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g eslint</div></pre></td></tr></table></figure>
+<p>Y posteriormente utilizarse desde línea de comandos:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint ejemmplo.js</div></pre></td></tr></table></figure>
+<p>Haciendo posible su inclusión en el <code>package.json</code> para su uso en nuestra build personalizada:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   ...</div><div class="line">   "scripts": &#123;</div><div class="line">      "lint": "eslint src test examples",</div><div class="line">   &#125;</div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2015/07/19/Construccion-de-proyectos-simple-con-NPM/" data-id="cja286ebt00066wd3mtvwheu4" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/21/Servidor-nginx-con-SSL-en-un-paso-con-Docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Siguiente</strong>
+      <div class="article-nav-title">
+        
+          Servidor nginx con SSL en un paso con Docker
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/02/11/Reduciendo-el-lag-de-las-aplicaciones-HTML5-en-movil/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Reduciendo el lag de las aplicaciones HTML5 en móvil</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+
+      <div>
+          <div class="banner">
+            <a href="mailto:borillo@gmail.com">¿Necesitas ayuda o formación técnica personalizada? Hablemos :)</a>
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/26/Taller-de-React-ES6-y-webpack-en-el-Codemotion-2015/">Taller de React, ES6 y Webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/">Gestión eficiente de tus instalaciones de NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+    <a href="/links" class="mobile-nav-link">enlaces</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

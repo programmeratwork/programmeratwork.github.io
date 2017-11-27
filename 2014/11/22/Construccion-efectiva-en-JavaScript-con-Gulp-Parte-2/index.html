@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Construcción efectiva con Gulp: Parte 2 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="Continuamos con el segundo artículo de esta serie dedicada a Gulp. No olvides revisar el capítulo anterior de introducción o el próximo acerca de otros aspectos adicionales.">
+<meta name="keywords" content="javascript,gulp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Construcción efectiva con Gulp: Parte 2">
+<meta property="og:url" content="http://programmeratwork.com/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="Continuamos con el segundo artículo de esta serie dedicada a Gulp. No olvides revisar el capítulo anterior de introducción o el próximo acerca de otros aspectos adicionales.">
+<meta property="og:locale" content="es">
+<meta property="og:image" content="http://programmeratwork.com/img/livereload.png">
+<meta property="og:updated_time" content="2017-09-01T13:38:04.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Construcción efectiva con Gulp: Parte 2">
+<meta name="twitter:description" content="Continuamos con el segundo artículo de esta serie dedicada a Gulp. No olvides revisar el capítulo anterior de introducción o el próximo acerca de otros aspectos adicionales.">
+<meta name="twitter:image" content="http://programmeratwork.com/img/livereload.png">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+          <a class="main-nav-link" href="/links">enlaces</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+      <div class="outer">
+        <section id="main"><article id="post-Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/" class="article-date">
+  <time datetime="2014-11-21T23:00:00.000Z" itemprop="datePublished">22/11/2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Construcción efectiva con Gulp: Parte 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Continuamos con el segundo artículo de esta serie dedicada a <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>. No olvides revisar el capítulo anterior de <a href="/2014/11/13/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-1/">introducción</a> o el próximo acerca de <a href="/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/">otros aspectos adicionales</a>.</p>
+<a id="more"></a>
+<h2 id="Extensiones-interesantes"><a href="#Extensiones-interesantes" class="headerlink" title="Extensiones interesantes"></a>Extensiones interesantes</h2><p>Si quieres saber qué extensiones puedes utilizar en <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>, la página de referencia es <a href="http://gulpjs.com/plugins/" target="_blank" rel="external">http://gulpjs.com/plugins/</a>.</p>
+<p>En esta página, los plugins que veamos etiquetados como <code>gulpfriendly</code>, no son plugins como tal, pero están diseñados para funcionar de forma correcta en el entorno de <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a>. En este sentido, es conveniente tener cuidado cuando buscamos módulos a utilizar en la página de Npm, ya que no vemos algunos de los tags que aquí se detallan como por ejemplo <code>blacklisted</code>.</p>
+<p>Recuerda que para usar un plugin es siempre necesario instalarlo vía Npm con la opción <code>--save-dev</code>.</p>
+<h3 id="Minificacion-de-scripts"><a href="#Minificacion-de-scripts" class="headerlink" title="Minificación de scripts"></a>Minificación de scripts</h3><p>La minificación de scripts permite reducir el tamaño de fichero de nuestros fuentes, con lo que su descarga es más rápido. Tenemos muchas opciones disponibles, pero una de la más utilizada es <code>uglify</code>.</p>
+<p>Para instalar <code>uglify</code> ejecutaremos el siguiente comando:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-uglify --save-dev</div></pre></td></tr></table></figure>
+<p>Para este ejemplo, crearemos un directorio <code>js</code> y copiaremos nuestros ficheros JavaScript dentro.</p>
+<p>La definición de nuestro <code>gulpfile.js</code> tendría que ser algo así:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'js/*.js'</span>)</div><div class="line">       .pipe(ugflify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Si en el directorio <code>js</code> tenemos un fichero <code>main.js</code> con el siguiente contenido:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> variable = <span class="string">"prueba"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcion1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcion2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Tras la ejecución, tendremos en el directorio <code>dist</code> el fichero <code>main.js</code> resultante con el resultado:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">funcion1</span>(<span class="params"></span>)</span>&#123;&#125;<span class="function"><span class="keyword">function</span> <span class="title">funcion2</span>(<span class="params"></span>)</span>&#123;&#125;<span class="keyword">var</span> variable=<span class="string">"prueba"</span>;</div></pre></td></tr></table></figure>
+<h3 id="Concatenacion-de-ficheros-del-mismo-tipo"><a href="#Concatenacion-de-ficheros-del-mismo-tipo" class="headerlink" title="Concatenación de ficheros del mismo tipo"></a>Concatenación de ficheros del mismo tipo</h3><p>Minimizar el número de peticiones HTTP que tiene que realizar el navegador, es una de las mejores optimizaciones que podemos realizar en nuestros desarrollos web. Para ello, una forma es concatenar todos los ficheros de un mismo tipo (por ejemplo, JavasScript) en un único fichero final para luego minificarlo.</p>
+<p>Para poder realizar la concatenación de ficheros, necesitamos tener instalado el siguiente módulo:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-concat --save-dev</div></pre></td></tr></table></figure>
+<p>Su uso es muy sencillo, simplemente tenemos que especificar el nombre del fichero destino antes de realizar la minificación:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'scripts'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'src/*.js'</span>)</div><div class="line">       .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">       .pipe(uglify())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="Watch"><a href="#Watch" class="headerlink" title="Watch"></a>Watch</h3><p><a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a> ya cuenta internamente con una tarea que se llama <code>watch</code>y que permite detectar cualquier tipo de cambio en los ficheros especificados. Esta funcionalidad es muy útil cuando, después de modificar por ejemplo un fichero SASS, es necesario su procesado con el fin de generar el CSS final que tenemos que visualizar en la página. Esta tarea de generación es muy pesada si la realizamos manualmente, pero con <code>watch</code>es algo que podemos automatizar:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'sass/*.scss'</span>)</div><div class="line">       .pipe(sass())</div><div class="line">       .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.watch(<span class="string">'sass/*.scss'</span>, [<span class="string">'sass'</span>]);</div><div class="line">&#125;);</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Por defecto, la función `</span>watch<span class="string">` nos devuelve un `</span>watcher<span class="string">`, el cual nos permite además ejecutar cualquier acción en el momento de detectar un cambio en los ficheros observados:</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span>javascript</div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> watcher = gulp.watch(<span class="string">'sass/*.scss'</span>, [<span class="string">'sass'</span>]);</div><div class="line">   watcher.on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'Tipo de evento: '</span> + event.type);</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'Path: '</span> + event.path);</div><div class="line">   &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Los tipos de eventos detectados son modificación, borrado y añadido de nuevos ficheros.</p>
+<p>Por otra parte, podemos hacer <code>watch</code> en otros eventos además de <code>change</code>:</p>
+<ul>
+<li><strong>end</strong>: El <code>watcher</code>ha finalizado.</li>
+<li><strong>error</strong>: Ha ocurrido un error.</li>
+<li><strong>ready</strong>: El<code>watcher</code> a detectado los ficheros especificados y está listo para escuchar cambios.</li>
+<li><strong>nomatch</strong>: La definición del GLOB no se puede resolver a ningún fichero.</li>
+</ul>
+<p>Por último, el <code>watcher</code> cuenta con una serie de métodos que podemos invocar manualmente:</p>
+<ul>
+<li><code>watcher.end()</code>: Paramos el <code>watcher</code>.</li>
+<li><code>watcher.files()</code>: Lista de ficheros observados.</li>
+<li><code>watcher.add(glob)</code>: Añadir ficheros al GLOB inicial</li>
+<li><code>watcher.remove(filepath)</code>: Borrar un fichero del GLOB inicial.</li>
+</ul>
+<h3 id="Recarga-automatica-del-navegador"><a href="#Recarga-automatica-del-navegador" class="headerlink" title="Recarga automática del navegador"></a>Recarga automática del navegador</h3><h4 id="LiverReload"><a href="#LiverReload" class="headerlink" title="LiverReload"></a>LiverReload</h4><p>Este módulo, combinado con <code>watch</code> y una extensión para el navegador, permite recargar la página HTML visualizada cada vez que se detecta un cambio en un fichero de código fuente relacionado (CSS, JavaScript, CoffeeScript, etc).</p>
+<p>Como siempre, lo primero es instalar el módulo:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-livereload --save-dev</div></pre></td></tr></table></figure>
+<p>A continuación, instalamos la extensión de <code>livereload</code>en el navegador. Para el caso de Chrome, necesitaremos instalarla desde el Chrome Web Store accediendo a la siguiente dirección:<br>    <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=es" target="_blank" rel="external">https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=es</a></p>
+<p>Por último, hay muchas ocasiones en las que <code>livereload</code> da problemas si la página a la que estamos accediendo en el navegador, se visualiza localmente accediendo mediante <strong>file://</strong> en lugar de <strong>http://</strong>. </p>
+<p>Para evitar este problema podemos usar <code>SimpleHTTPServer</code>, un servidor web muy rápido y ligero que permite servir por HTTP cualquier directorio de nuestro sistema de ficheros ejecutando simplemente este comando en el directorio a exponer:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python -m SimpleHTTPServer</div></pre></td></tr></table></figure>
+<p>Una vez tenemos todos los componentes listos e instalados, crearemos un proyecto con un documento HTML que tenga una referencia al fichero CSS que estamos generando tras compilar nuestros estilos definidos en SASS.</p>
+<p>Un posible ejemplo de este fichero es:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ cat test.html</div><div class="line">   &lt;!doctype html&gt;</div><div class="line">   &lt;html&gt;</div><div class="line">     &lt;head&gt;</div><div class="line">       &lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"css/screen.css"</span>&gt;</div><div class="line">     &lt;/head&gt;</div><div class="line">     &lt;body&gt;</div><div class="line">       &lt;h1&gt;LiverReload Test&lt;/h1&gt;</div><div class="line">     &lt;/body&gt;</div><div class="line">   &lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>Este HTML hace referencia a <code>screen.css</code>. Este fichero CSS se compila a partir de <code>screen.scss</code>, el cual está almacenado en el directorio <code>sass</code>.</p>
+<p>El fichero de <a href="http://gulpjs.com/" target="_blank" rel="external">Gulp</a> para el escenario descrito sería pués:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</div><div class="line"><span class="keyword">var</span> livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.src(<span class="string">'sass/*.scss'</span>)</div><div class="line">       .pipe(sass())</div><div class="line">       .pipe(gulp.dest(<span class="string">'css'</span>))</div><div class="line">       .pipe(livereload());</div><div class="line">&#125;);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">   gulp.watch(<span class="string">'sass/*.scss'</span>, [<span class="string">'sass'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>De esta forma y con <code>SimpleHTTPServer</code> arrancado, ya podemos acceder a la dirección local:</p>
+<pre><code>http://localhost:8000/test.html
+</code></pre><p>Cuando accedemos por primera vez, tenemos que hacer clic sobre el icono de <code>livereload</code> con el fin de activarlo y comenzar a modificar nuestros ficheros <code>.scss</code>, viendo como el navegador se recarga automáticamente.</p>
+<p>{<1>}<img src="http://programmeratwork.com/img/livereload.png" alt="LiveReload"></1></p>
+<p>Por supuesto, <code>livereload</code> funciona para cualquier tipo de fichero que estemos monitorizando con <code>watch</code>.</p>
+<h4 id="BrowserSync"><a href="#BrowserSync" class="headerlink" title="BrowserSync"></a>BrowserSync</h4><p>BrowserSync representa una alternativa muy completa el famoso LiveReload. Aunque tienen en común la capacidad de recargar en el navegador los cambios que se producen, BrowserSync tiene un montón de funcionalidades más.</p>
+<p>Cuando realizamos un cambio en una páina, BrowserSync la recarga, pero si es el CSS el que se ha visto modficado, se inyectan los cambios sin necesidad de realizar una recarga completa. Esto permite que el desarrollo de páginas ricas sea mucho más sencillo, ya que no es necesario volver a hacer múltiples clicks para conseguir volver al estado en que estábamos en la página.</p>
+<p>Otra de las funcionalidades más potentes de BrowserSync es la capacidad de sincronizar clicks, acciones en formularios o la posición del scroll entre los distintos navegadores. Es posible abrir varios naegadores de escritorio o móviles en emuladores y navegar la misma web de forma equivalente en todos al mismo tiempo.</p>
+<p>Por último, BrowserSync no necesita de la instalación de un plugin en el navegador, ya que es capaz de enviar los cambios producidos directamente al navegador.</p>
+<p>Aunque no existe un módulo de Gulp para BrowserSync debido al hecho de que no se realiza una manipulación directa de ficheros en el pipeline de construcción, sí que es posible utilizar directamente el módulo disponible a través de Npm.</p>
+<p>Para ello sólo debemos instalar el módulo:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install browser-sync --save-dev</div></pre></td></tr></table></figure>
+<p>Y configurar los ficheros que vamos a monitorizar y recargar:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</div><div class="line">    browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">var</span> files = [</div><div class="line">      <span class="string">'**/*.html'</span>,</div><div class="line">      <span class="string">'**/*.css'</span></div><div class="line">   ];</div><div class="line"></div><div class="line">   browserSync.init(files, &#123;</div><div class="line">      server: &#123;</div><div class="line">         baseDir: <span class="string">'.'</span></div><div class="line">      &#125;</div><div class="line">   &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>El resultado es que, al ejecutar el comando <code>gulp</code>, BrowserSync comienza la monitorización y nos ofrece un enlace al que se deben conectar los navegadores que queramos sincronizar (en este caso <a href="http://192.168.1.103:3000" target="_blank" rel="external">http://192.168.1.103:3000</a>):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[18:22:51] Using gulpfile /opt/devel/workspaces/programmer-at-work-examples/gulp/browsersync/gulpfile.js</div><div class="line">[18:22:51] Starting <span class="string">'default'</span>...</div><div class="line">[18:22:51] Finished <span class="string">'default'</span> after 5.15 ms</div><div class="line">[BS] Local: &gt;&gt;&gt; http://localhost:3000</div><div class="line">[BS] External: &gt;&gt;&gt; http://192.168.1.103:3000</div><div class="line">[BS] Serving files from: .</div></pre></td></tr></table></figure>
+<p>Simplemente establenciendo esta dirección en Chrome, Firefox o IE (desde un VirtualBox si no estamos en Windows), podemos realizar pruebas sobre todos ellos al mismo tiempo sin ninguna configuración adicional.</p>
+<p>Finalmente, tamibén podemos hacer pruebas con navegadores de dispositivos móviles al mismo tiempo. Por ejemplo, si estamos en MacOSX y tenemos instalado XCode, podemos utilizar el simulador de iPhone para testear Safari.</p>
+<h3 id="Procesamiento-de-ficheros-CoffeeScript"><a href="#Procesamiento-de-ficheros-CoffeeScript" class="headerlink" title="Procesamiento de ficheros CoffeeScript"></a>Procesamiento de ficheros CoffeeScript</h3><p>Para poder generar JavaScript a partir de los ficheros CoffeeScript, necesitamos el módulo `gulp-coffee’:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp-coffee --save-dev</div></pre></td></tr></table></figure>
+<p>Y posteriormente, su inclusión en el pipeline de construcción:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-coffee'</span>);</div><div class="line"><span class="keyword">var</span> concat = <span class="built_in">require</span>(<span class="string">'gulp-concat'</span>);</div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">'gulp-uglify'</span>);</div><div class="line"></div><div class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">   <span class="keyword">return</span> gulp.src(<span class="string">'coffee/*.coffee'</span>);</div><div class="line">              .pipe(coffee())</div><div class="line">              .pipe(concat(<span class="string">'all.min.js'</span>))</div><div class="line">              .pipe(uglify())</div><div class="line">              .pipe(gulp.dest(<span class="string">'dist'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h1 id="Referencias"><a href="#Referencias" class="headerlink" title="Referencias"></a>Referencias</h1><p>Puedes encontrar todos los ejemplos utilizados en este artículo en <a href="https://github.com/programmeratwork/articles-examples/tree/master/gulp" target="_blank" rel="external">el repositorio de ejemplos de Programmer At Work</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/" data-id="cja286ebv00086wd3t23k3yq0" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Siguiente</strong>
+      <div class="article-nav-title">
+        
+          Construcción efectiva con Gulp: Parte 3
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/11/13/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Construcción efectiva con Gulp: Parte 1</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+
+      <div>
+          <div class="banner">
+            <a href="mailto:borillo@gmail.com">¿Necesitas ayuda o formación técnica personalizada? Hablemos :)</a>
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/26/Taller-de-React-ES6-y-webpack-en-el-Codemotion-2015/">Taller de React, ES6 y Webpack</a>
+          </li>
+        
+          <li>
+            <a href="/2015/07/24/Gestion-eficiente-de-tus-instalaciones-de-NodeJS/">Gestión eficiente de tus instalaciones de NodeJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+    <a href="/links" class="mobile-nav-link">enlaces</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
