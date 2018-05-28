@@ -1309,6 +1309,51 @@ pre .javascript .function {
   -webkit-box-shadow: 1px 7px 30px 2px #808083;
   box-shadow: 1px 7px 30px 2px #808083;
 }
+.course {
+  -webkit-box-shadow: 1px 7px 30px 2px #808083;
+  box-shadow: 1px 7px 30px 2px #808083;
+  border-radius: 10px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.course header {
+  font-weight: bold;
+  background-color: #ffa500;
+  color: #fff;
+  padding: 1.6rem;
+  border: 0;
+  text-decoration: none;
+}
+.course section {
+  padding: 2rem;
+  overflow: auto;
+}
+.course section .course-description div {
+  margin-top: 0.6rem;
+}
+.course section h1 {
+  font-size: 2.1rem;
+}
+.course section h2 {
+  color: #999;
+}
+.course p {
+  text-align: justify;
+}
+.button-info {
+  background-color: #999;
+  padding: 1rem;
+  color: #fff !important;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border: 1px solid #888;
+  text-decoration: none;
+}
+.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
 .widget-wrap {
   margin-bottom: 50px !important;
 }
