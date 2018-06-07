@@ -3,16 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: gulp | </title>
+  <title>EKS ya está aquí | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
-  <meta property="og:type" content="website">
-<meta property="og:title">
-<meta property="og:url" content="http://programmeratwork.com/tags/gulp/index.html">
+  <meta name="description" content="Desde que en noviembre del año pasado se anunciase en el Re:invent 2017 que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.  Aunque hace ya tiempo que G">
+<meta name="keywords" content="kubernetes,aws,devops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EKS ya está aquí">
+<meta property="og:url" content="http://programmeratwork.com/2018/06/07/EKS-ya-esta-aqui/index.html">
 <meta property="og:site_name">
+<meta property="og:description" content="Desde que en noviembre del año pasado se anunciase en el Re:invent 2017 que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.  Aunque hace ya tiempo que G">
 <meta property="og:locale" content="es">
+<meta property="og:updated_time" content="2018-06-07T09:45:10.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title">
+<meta name="twitter:title" content="EKS ya está aquí">
+<meta name="twitter:description" content="Desde que en noviembre del año pasado se anunciase en el Re:invent 2017 que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.  Aunque hace ya tiempo que G">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
   
     <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
@@ -78,77 +83,65 @@ ga('send', 'pageview');
           
       <div class="outer">              
         <section id="main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/" class="archive-article-date">
-  <time datetime="2014-12-08T23:00:00.000Z" itemprop="datePublished">dic. 9</time>
+          <article id="post-EKS-ya-esta-aqui" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/07/EKS-ya-esta-aqui/" class="article-date">
+  <time datetime="2018-06-07T08:02:03.000Z" itemprop="datePublished">07/06/2018</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/12/09/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-3/">Construcción efectiva con Gulp: Parte 3</a>
+    <h1 class="article-title" itemprop="name">
+      EKS ya está aquí
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/" class="archive-article-date">
-  <time datetime="2014-11-21T23:00:00.000Z" itemprop="datePublished">nov. 22</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/11/22/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-2/">Construcción efectiva con Gulp: Parte 2</a>
-    </h1>
-  
+        <p>Desde que en noviembre del año pasado se anunciase en el <a href="https://aws.amazon.com/es/new/reinvent/" target="_blank" rel="external">Re:invent 2017</a> que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia. </p>
+<p>Aunque hace ya tiempo que Google Cloud tiene <a href="https://cloud.google.com/kubernetes-engine/" target="_blank" rel="external">K8s administrado</a>, es una buena noticia que Amazon se haya animado a dar el paso.</p>
+<p>Por un lado, que empresas como Docker y Amazon hayan decidido dar soporte a Kubernetes, siendo que ya tienen sus respectivos sistemas de orquestación y despliegue de contenedores (Docker Swarm y ECS, respectivamente) no deja lugar a dudas de quién está ganando la batalla.</p>
+<p>Por otro, AWS, a su vez, es el <a href="https://www.rightscale.com/blog/cloud-industry-insights/cloud-computing-trends-2018-state-cloud-survey" target="_blank" rel="external">proveedor de Cloud más utilizado</a>. Siendo usuario de AWS, tener que gestionar Kubernetes uno mismo o usar 2 proveedores de Cloud, era un problema.</p>
+<h2 id="Primeras-impresiones"><a href="#Primeras-impresiones" class="headerlink" title="Primeras impresiones"></a>Primeras impresiones</h2><p>Dicho esto, esperemos que esta noticia sea el primer paso de lo que debe venir. Aunque este sistema tiene muchas ventajas, como la integración de los roles IAM con la seguridad de Kubernetes y la gestión automática de los nodos master, todavía echamos a faltar más transparencia en la gestión.</p>
+<p>Si te animas a seguir el <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html" target="_blank" rel="external"><em>Getting Started</em></a> que han preparado verás que, aunque es bastante sencillo seguir los pasos, la sensación es que hay que realizar demasiadas acciones para lo que debería ser un servicio gestionado. Por ejemplo, esperamos que en un futuro no sea necesario crear instancias EC2 para poder tener un clúster de Kubernetes funcionando, que sea transparente para el usuario.</p>
+<p>Respecto al precio, tener que gestionar máquinas EC2 fuera de lo que es la creación del clúster tiene un impacto negativo en el precio. Además del cargo por la creación y uso del clúster (0,20$/hora) debemos sumarle los cargos habituales por el uso de máquinas EC2.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusión"></a>Conclusión</h2><p>Aunque para los usuarios de AWS y Kubernetes estamos ante una gran noticia, queda mucho camino por recorrer. Probablemente la ya anunciada futura integración con Fargate fuerce a Amazon a hacer que EKS sea más serverless. Lo que es seguro es que, que el gigante se haya unido a la amplia comunidad de K8s, dará un empujón al proyecto.</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2014/11/13/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-1/" class="archive-article-date">
-  <time datetime="2014-11-12T23:00:00.000Z" itemprop="datePublished">nov. 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/11/13/Construccion-efectiva-en-JavaScript-con-Gulp-Parte-1/">Construcción efectiva con Gulp: Parte 1</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/jaime-twitter.jpg" />    
+      <a href="https://twitter.com/jaimeperera" class="article-author-name">Jaime Perera</a>      
+      <span class="article-author-separator">&nbsp;</span>
 
-    </header>
+      <a data-url="http://programmeratwork.com/2018/06/07/EKS-ya-esta-aqui/" data-id="cji4d586s000epgbm4nqsho20" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/28/Alineate-con-tu-cliente-y-no-solo-con-su-stack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Alineate con tu cliente y no sólo con su stack</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
         </section>
