@@ -14,7 +14,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser Gulp o Grunt, el uso de la sección de scripts de N">
 <meta property="og:locale" content="es">
-<meta property="og:updated_time" content="2017-09-05T16:15:20.000Z">
+<meta property="og:updated_time" content="2018-11-12T15:46:50.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Construcción de proyectos simple con NPM">
 <meta name="twitter:description" content="En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser Gulp o Grunt, el uso de la sección de scripts de N">
@@ -105,20 +105,20 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser <a href="http://programmeratwork.com/blog/2014/11/13/construccion-efectiva-en-javascript-con-gulp-1/">Gulp</a> o <a href="http://gruntjs.com/" target="_blank" rel="noopener">Grunt</a>, el uso de la sección de scripts de <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM</a> constituye una apuesta por la simplicidad.</p>
+        <p>En aplicaciones JavaScript tanto en frontend como en backend, al margen de las herramientas de construcción más completas y complejas como pueden ser <a href="http://programmeratwork.com/blog/2014/11/13/construccion-efectiva-en-javascript-con-gulp-1/">Gulp</a> o <a href="http://gruntjs.com/" target="_blank" rel="external">Grunt</a>, el uso de la sección de scripts de <a href="https://www.npmjs.com/" target="_blank" rel="external">NPM</a> constituye una apuesta por la simplicidad.</p>
 <a id="more"></a>
-<p>Si inicializamos un proyecto nuevo con <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM</a>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>Si inicializamos un proyecto nuevo con <a href="https://www.npmjs.com/" target="_blank" rel="external">NPM</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm -v</div><div class="line">npm init</div></pre></td></tr></table></figure>
 <p>Podremos editar el <code>package.json</code> generado con el fin de asociar comandos concretos a determinados identificadores de acción:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"name"</span>: <span class="string">"miproyecto"</span>,</span><br><span class="line">   <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</span><br><span class="line">   <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">      <span class="attr">"clean"</span>: <span class="string">"rm -rf build"</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">"author"</span>: <span class="string">""</span>,</span><br><span class="line">   <span class="attr">"license"</span>: <span class="string">"ISC"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   <span class="attr">"name"</span>: <span class="string">"miproyecto"</span>,</div><div class="line">   <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</div><div class="line">   <span class="attr">"scripts"</span>: &#123;</div><div class="line">      <span class="attr">"clean"</span>: <span class="string">"rm -rf build"</span></div><div class="line">   &#125;,</div><div class="line">   <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">   <span class="attr">"license"</span>: <span class="string">"ISC"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Dentro de cada acción definida, podemos invocar tanto scripts propios como comandos del sistema operativo.</p>
-<p>La practica habitual, es aprovechar los comandos del sistema y complementarlos con otros más especializados que no son más que <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-globally" target="_blank" rel="noopener">módulos NPM instalados globalmente</a> que exponen ciertos comandos.</p>
-<p>Un ejemplo puede ser la herramienta de chequeo de sintaxis para JavaScript <a href="http://eslint.org/" target="_blank" rel="noopener">EsLint</a>, la cual se puede instalar globalmente:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g eslint</span><br></pre></td></tr></table></figure>
+<p>La practica habitual, es aprovechar los comandos del sistema y complementarlos con otros más especializados que no son más que <a href="https://docs.npmjs.com/getting-started/installing-npm-packages-globally" target="_blank" rel="external">módulos NPM instalados globalmente</a> que exponen ciertos comandos.</p>
+<p>Un ejemplo puede ser la herramienta de chequeo de sintaxis para JavaScript <a href="http://eslint.org/" target="_blank" rel="external">EsLint</a>, la cual se puede instalar globalmente:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g eslint</div></pre></td></tr></table></figure>
 <p>Y posteriormente utilizarse desde línea de comandos:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eslint ejemmplo.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint ejemmplo.js</div></pre></td></tr></table></figure>
 <p>Haciendo posible su inclusión en el <code>package.json</code> para su uso en nuestra build personalizada:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   ...</span><br><span class="line">   "scripts": &#123;</span><br><span class="line">      "lint": "eslint src test examples",</span><br><span class="line">   &#125;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   ...</div><div class="line">   "scripts": &#123;</div><div class="line">      "lint": "eslint src test examples",</div><div class="line">   &#125;</div><div class="line">   ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -126,7 +126,7 @@ ga('send', 'pageview');
       <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
       <span class="article-author-separator">&nbsp;</span>
 
-      <a data-url="http://programmeratwork.com/2015/07/19/Construccion-de-proyectos-simple-con-NPM/" data-id="cjn9azkjm000b3t1mr1ngrdv1" class="article-share-link">Comparte</a>
+      <a data-url="http://programmeratwork.com/2015/07/19/Construccion-de-proyectos-simple-con-NPM/" data-id="cjoei899n000ce1d3hffhtaic" class="article-share-link">Comparte</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
@@ -179,7 +179,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget inline">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/agile/">agile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mindset/">mindset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/agile/">agile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cursos/">cursos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mindset/">mindset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
     </div>
   </div>
 
@@ -189,7 +189,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Archivo</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">junio 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">mayo 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">noviembre 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">junio 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">mayo 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
     </div>
   </div>
 
@@ -200,6 +200,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/11/12/Agile-JavaScript-completa-dos-ediciones-Primeros-pasos-y-conclusiones/">Agile JavaScript completa dos ediciones: Primeros pasos y conclusiones</a>
+          </li>
         
           <li>
             <a href="/2018/06/07/EKS-ya-esta-aqui/">EKS ya está aquí</a>
@@ -215,10 +219,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/">Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates</a>
           </li>
         
       </ul>
