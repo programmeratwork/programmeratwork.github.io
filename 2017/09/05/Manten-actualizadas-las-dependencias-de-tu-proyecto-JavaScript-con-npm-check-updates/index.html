@@ -14,7 +14,7 @@
 <meta property="og:site_name">
 <meta property="og:description" content="Los paquetes en NPM crecen a velocidad de vértigo. Cada día aparecen infinidad de nuevas dependencias que poder utilizar en nuestros proyectos JavaScript.">
 <meta property="og:locale" content="es">
-<meta property="og:updated_time" content="2018-11-14T13:51:39.596Z">
+<meta property="og:updated_time" content="2018-11-12T15:47:42.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mantén actualizadas las dependencias de tu proyecto JavaScript con npm-check-updates">
 <meta name="twitter:description" content="Los paquetes en NPM crecen a velocidad de vértigo. Cada día aparecen infinidad de nuevas dependencias que poder utilizar en nuestros proyectos JavaScript.">
@@ -105,18 +105,18 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Los paquetes en <a href="https://www.npmjs.com/" target="_blank" rel="noopener">NPM</a> crecen a velocidad de vértigo. Cada día aparecen infinidad de nuevas dependencias que poder utilizar en nuestros proyectos JavaScript.</p>
+        <p>Los paquetes en <a href="https://www.npmjs.com/" target="_blank" rel="external">NPM</a> crecen a velocidad de vértigo. Cada día aparecen infinidad de nuevas dependencias que poder utilizar en nuestros proyectos JavaScript.</p>
 <a id="more"></a>
 <p>De igual forma, los paquetes que utilizamos en nuestros proyectos se siguen actualizando y resulta bastante incómodo revisar cual es la versión actual de uno u otro paquete configurado en nuestro <code>package.json</code>.</p>
 <p>¿Cómo podemos solucionarlo? En este caso, <code>npm-check-updates</code> nos puede ayudar :)</p>
 <p><code>npm-check-updates</code> es un herramienta que podemos ejecutar en línea de comandos y que permite listar las últimas versiones de las dependencias que tengamos instaladas, así como actualizarlas a demanda.</p>
 <p>Para poderlo utilizar, primero debemos instalarlo:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm-check-updates</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g npm-check-updates</div></pre></td></tr></table></figure>
 <p>Posteriormente, tendremos que ejecutar el comando <code>ncu</code> dentro del directorio que contenga el <code>package.json</code> de nuestro proyecto. Aquí podemos ver un ejemplo de la salida que nos da, mostrando para cada dependencia la versión actual y la nueva a la que podemos actualizar:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ ncu</span><br><span class="line">Using /private/tmp/need-upgrade/package.json</span><br><span class="line">⸨░░░░░░░░░░░░░░░░░░⸩ ⠧ :</span><br><span class="line"> <span class="built_in">history</span>                            ^1.13.1  →   ^4.7.2</span><br><span class="line"> jquery                              ^2.1.4  →   ^3.2.1</span><br><span class="line"> normalize.css                       ^3.0.3  →   ^7.0.0</span><br><span class="line"> react                              ^0.14.2  →  ^15.6.1</span><br><span class="line"> react-dom                          ^0.14.2  →  ^15.6.1</span><br><span class="line"> react-modal                         ^1.4.0  →   ^2.2.4</span><br><span class="line"> react-router                        ^1.0.0  →   ^4.2.0</span><br><span class="line"> autoprefixer                        ^6.0.3  →   ^7.1.3</span><br><span class="line"> babel-eslint                        ^4.1.5  →   ^7.2.3</span><br><span class="line"> babel-loader                        ^6.0.1  →   ^7.1.2</span><br><span class="line"> webpack                            ^1.9.11  →   ^3.5.5</span><br><span class="line"> webpack-dev-server                  ^1.9.0  →   ^2.7.1</span><br><span class="line"></span><br><span class="line">Run ncu with -u to upgrade package.json</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ ncu</div><div class="line">Using /private/tmp/need-upgrade/package.json</div><div class="line">⸨░░░░░░░░░░░░░░░░░░⸩ ⠧ :</div><div class="line"> <span class="built_in">history</span>                            ^1.13.1  →   ^4.7.2</div><div class="line"> jquery                              ^2.1.4  →   ^3.2.1</div><div class="line"> normalize.css                       ^3.0.3  →   ^7.0.0</div><div class="line"> react                              ^0.14.2  →  ^15.6.1</div><div class="line"> react-dom                          ^0.14.2  →  ^15.6.1</div><div class="line"> react-modal                         ^1.4.0  →   ^2.2.4</div><div class="line"> react-router                        ^1.0.0  →   ^4.2.0</div><div class="line"> autoprefixer                        ^6.0.3  →   ^7.1.3</div><div class="line"> babel-eslint                        ^4.1.5  →   ^7.2.3</div><div class="line"> babel-loader                        ^6.0.1  →   ^7.1.2</div><div class="line"> webpack                            ^1.9.11  →   ^3.5.5</div><div class="line"> webpack-dev-server                  ^1.9.0  →   ^2.7.1</div><div class="line"></div><div class="line">Run ncu with -u to upgrade package.json</div><div class="line">`</div></pre></td></tr></table></figure>
 <p>Tal y como se indica en la salida del comando, si lo ejectuamos con la opción <code>-u</code>, <code>npm-check-updates</code> actualizará todas las dependencias en nuestro <code>package.json</code> a las últimas mostradas anteriormente.</p>
 <p>En cualquier caso, si sólo queremos actualizar una dependencia en concreto, podemos especificarla de la siguiente manera:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ncu -u react</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ncu -u react</div></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -124,7 +124,7 @@ ga('send', 'pageview');
       <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
       <span class="article-author-separator">&nbsp;</span>
 
-      <a data-url="http://programmeratwork.com/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/" data-id="cjoh8880s000nv51m92pp278s" class="article-share-link">Comparte</a>
+      <a data-url="http://programmeratwork.com/2017/09/05/Manten-actualizadas-las-dependencias-de-tu-proyecto-JavaScript-con-npm-check-updates/" data-id="cjp8efptx000nked3xldqb05u" class="article-share-link">Comparte</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/">npm</a></li></ul>
@@ -200,6 +200,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2018/11/28/Commit-Conf-2018/">Commit Conf 2018</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/12/Agile-JavaScript-completa-dos-ediciones-Primeros-pasos-y-conclusiones/">Agile JavaScript completa dos ediciones: Primeros pasos y conclusiones</a>
           </li>
         
@@ -213,10 +217,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2017/09/18/Nuevo-curso-de-experto-en-Java-React-y-Docker-en-la-Universitat-Jaume-I/">Nuevo curso de experto en Java, React y Docker en la Universitat Jaume I</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/06/Como-generar-fake-data-en-nuestros-tests-de-aceptacion/">Como generar &#34;fake data&#34; en nuestros tests de aceptación</a>
           </li>
         
       </ul>
