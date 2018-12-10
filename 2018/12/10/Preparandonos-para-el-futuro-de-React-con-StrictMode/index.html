@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Preparándonos para el futuro con React StrictMode | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <meta name="description" content="React está cambiando con cada versión y, aunque es una de las librerías que mejor mantiene la compatibilidad entre versiones, no debemos de perder de vista hacia adonde va el framework. El llamado ya">
+<meta name="keywords" content="javascript,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Preparándonos para el futuro con React StrictMode">
+<meta property="og:url" content="http://programmeratwork.com/2018/12/10/Preparandonos-para-el-futuro-de-React-con-StrictMode/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="React está cambiando con cada versión y, aunque es una de las librerías que mejor mantiene la compatibilidad entre versiones, no debemos de perder de vista hacia adonde va el framework. El llamado ya">
+<meta property="og:locale" content="es">
+<meta property="og:image" content="http://programmeratwork.com/img/strictmode.png">
+<meta property="og:image" content="http://programmeratwork.com/img/warning-strictmode-lifecycle.png">
+<meta property="og:image" content="http://programmeratwork.com/img/warning-strictmode-refs.png">
+<meta property="og:updated_time" content="2018-12-10T17:11:07.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Preparándonos para el futuro con React StrictMode">
+<meta name="twitter:description" content="React está cambiando con cada versión y, aunque es una de las librerías que mejor mantiene la compatibilidad entre versiones, no debemos de perder de vista hacia adonde va el framework. El llamado ya">
+<meta name="twitter:image" content="http://programmeratwork.com/img/strictmode.png">
+<meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
+  
+    <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-56922820-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">inicio</a>
+        
+          <a class="main-nav-link" href="/cursos">cursos</a>
+        
+          <a class="main-nav-link" href="/archives">posts</a>
+        
+          <a class="main-nav-link" href="/videos">videos</a>
+        
+          <a class="main-nav-link" href="/charlas">charlas</a>
+        
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+</div>
+
+          
+      <div class="outer">              
+        <section id="main">
+          <article id="post-Preparandonos-para-el-futuro-de-React-con-StrictMode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/10/Preparandonos-para-el-futuro-de-React-con-StrictMode/" class="article-date">
+  <time datetime="2018-12-09T23:00:00.000Z" itemprop="datePublished">10/12/2018</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Preparándonos para el futuro con React StrictMode
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/strictmode.png" alt=""></p>
+<p>React está cambiando con cada versión y, aunque es una de las librerías que mejor mantiene la compatibilidad entre versiones, no debemos de perder de vista hacia adonde va el framework. El llamado ya <a href="https://www.youtube.com/watch?v=ByBPyMBTzM0" target="_blank" rel="external">Cocurrent React</a>, va a traer consigo una grandísimo cambio en cuanto a la capacidad actual de realizar operaciones de renderizado asíncrono basado en prioridades. No te pierdas pues <a href="https://auth0.com/blog/time-slice-suspense-react16/" target="_blank" rel="external">time slicing y Suspense API</a> si quieres saber un poco más acerca de todo esto :)</p>
+<a id="more"></a>
+<p>Mientras esta revolución aterriza en las versiones estables de React, es nuestra responsabilidad el dejar de utilizar aquellos elementos del framework que ya están deprecados, con el fin de poder ir absorbiendo las novedades sin obstaculizar la evolución funcional del producto que estemos desarrollando. Con el fin de ayudar a cumplir este objetivo aparece <a href="https://reactjs.org/docs/strict-mode.html" target="_blank" rel="external">StrictMode de React</a>, el cual nos va a permitr detectar aquellos patrones y elementos obsoletos que nuestra aplicación o alguna de sus dependencias esté utilizando y que pueden suponer un problema mayor en el futuro.</p>
+<p>Su activación en nuestra aplicación es muy sencilla y no impactará en ninguna medida en el rendimiento de la misma en producción. Veamos pues un ejemplo mínimo:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component, StrictMode &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;StrictMode&gt;</div><div class="line">        &lt;Header /&gt;</div><div class="line">        &lt;Body /&gt;</div><div class="line">      &lt;<span class="regexp">/StrictMode&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
+<p>Como podéis ver, la marca JSX StrictMode actua como un <a href="https://reactjs.org/docs/fragments.html" target="_blank" rel="external">Fragment</a> o un <a href="https://reactjs.org/docs/error-boundaries.html" target="_blank" rel="external">Error Boundary</a> y no tendrá ningún efecto visual en la aplicación. En cualquier caso, lo que si que hará es actuar sobre los elementos que contiene en su jerarquía, haciendo las comprobaciones necesarias para garantizar que no utilizamos nada obsoleto o deprecado en ellos.</p>
+<h1 id="¿Que-va-a-poder-detectar-StrictMode"><a href="#¿Que-va-a-poder-detectar-StrictMode" class="headerlink" title="¿Qué va a poder detectar StrictMode?"></a>¿Qué va a poder detectar StrictMode?</h1><p>Entre los aspectos principales que verificará, cabe destacar dos que suelen estar muy extendidos en las aplicaciones: <code>lifecycle methods</code> obsoletos y <code>refs</code> definidas con strings.</p>
+<p>En el primer caso, si cualquier de las clases que contiene la marca StrictMode hace uso de algún método del ciclo de vida que se ha considerado como obsoleto, obtendremos inmediatamente un error en la consola informándonos del problema y sugiriéndonos una posible solución de forma inmediata. Vemos pues que pasa si el componente <code>Header</code> define <code>componentWillMount</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Header</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  componentWillMount() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Utilizando un lifecycle method obsoleto :)"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Evidentemente, este método sigue funcionando y nuestro código se ejecutará, pero en desarrollo veremos en la consola de las Google Chrome Tools el siguiente warning:</p>
+<p><img src="/img/warning-strictmode-lifecycle.png" alt=""></p>
+<p>En el segundo caso, si tenemos alguna referencia en modo string y no utilizamos una <a href="https://reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="external"><code>callback ref</code> o el nuevo <code>createRef</code></a>, también recibiremos un warning al respecto:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Body</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  executeAction = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> input = <span class="keyword">this</span>.refs[<span class="string">"value-input"</span>];</div><div class="line">    <span class="built_in">console</span>.log(input.value);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;input</div><div class="line">          ref=<span class="string">"value-input"</span></div><div class="line">          type=<span class="string">"text"</span></div><div class="line">          defaultValue=<span class="string">"valor"</span></div><div class="line">          onClick=&#123;<span class="keyword">this</span>.executeAction&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
+<p><img src="/img/warning-strictmode-refs.png" alt=""></p>
+<h1 id="Otras-comprobaciones-que-realiza-StrictMode"><a href="#Otras-comprobaciones-que-realiza-StrictMode" class="headerlink" title="Otras comprobaciones que realiza StrictMode"></a>Otras comprobaciones que realiza StrictMode</h1><p>Aunque estas son las dos principales comprobaciones, StrictMode es capaz además de detectar:</p>
+<ul>
+<li>Usos de <a href="https://reactjs.org/docs/react-dom.html#finddomnode" target="_blank" rel="external"><code>findDOMNode</code></a></li>
+<li>Side-effects en funciones del ciclo de vida que deberían de ser “seguras” como es <code>constructor</code>, <code>componentWillMount</code>, <code>componentWillReceiveProps</code> o <code>componentWillUpdate</code>.</li>
+<li>Usos de la <a href="https://reactjs.org/docs/legacy-context.html" target="_blank" rel="external">antigua Context API</a> que ha sido sustituida por <a href="https://reactjs.org/docs/context.html" target="_blank" rel="external">una nueva con un API pública y estable</a>.</li>
+</ul>
+<p>Así que ya lo sabes, mantente estricto y llegarás más preparado a todos los cambios que llegarán con React. En el mientras tanto y para cambios automatizados sobre el código, no dejes de echar un ojo a los <a href="https://github.com/reactjs/react-codemod" target="_blank" rel="external">codemods</a> que React publica, ya que te pueden simplificar una barbaridad los procesos de migración y cambio ante nuevas APIs.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <img class="article-author-avatar" src="/img/borillo.jpg" />    
+      <a href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
+      <span class="article-author-separator">&nbsp;</span>
+
+      <a data-url="http://programmeratwork.com/2018/12/10/Preparandonos-para-el-futuro-de-React-con-StrictMode/" data-id="cjpikqps8000s83d3vfiwt8kd" class="article-share-link">Comparte</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/28/Commit-Conf-2018/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Anterior</strong>
+      <div class="article-nav-title">Commit Conf 2018</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+        </section>
+
+        
+      </div>
+
+      <div>
+          <div class="banner">
+          </div>
+      </div>
+
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget inline">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/agile/">agile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/aws/">aws</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cursos/">cursos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/devops/">devops</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es6/">es6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gulp/">gulp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mindset/">mindset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nvm/">nvm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssl/">ssl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/testing/">testing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivo</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">diciembre 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">noviembre 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">junio 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">mayo 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">septiembre 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">noviembre 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">julio 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">febrero 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">diciembre 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">noviembre 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/12/10/Preparandonos-para-el-futuro-de-React-con-StrictMode/">Preparándonos para el futuro con React StrictMode</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/28/Commit-Conf-2018/">Commit Conf 2018</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/12/Agile-JavaScript-completa-dos-ediciones-Primeros-pasos-y-conclusiones/">Agile JavaScript completa dos ediciones: Primeros pasos y conclusiones</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/07/EKS-ya-esta-aqui/">EKS ya está aquí</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/28/Alineate-con-tu-cliente-y-no-solo-con-su-stack/">Alineate con tu cliente y no sólo con su stack</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+
+   
+    <!--
+    <div>
+      <ul class="small-block-grid-2 medium-block-grid-4">
+        <li style="text-align:center;">
+          <a href="http://devscola.org">
+            <img src="/img/devscola.jpg" style="width:7em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://agileatwork.es">
+            <img src="/img/agileatwork.png" style="width:19em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://cursohtml5js.com">
+            <img src="/img/html5js.png" style="width:8em;" />
+          </a>
+        </li>
+        <li style="text-align:center;">
+          <a href="http://decharlas.com">
+            <img src="/img/decharlas.png" style="width:9em;" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    -->
+</aside>
+  
+</footer>
+    </div>
+        
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">inicio</a>
+  
+    <a href="/cursos" class="mobile-nav-link">cursos</a>
+  
+    <a href="/archives" class="mobile-nav-link">posts</a>
+  
+    <a href="/videos" class="mobile-nav-link">videos</a>
+  
+    <a href="/charlas" class="mobile-nav-link">charlas</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
