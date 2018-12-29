@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>EKS ya está aquí | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css">
   <meta name="description" content="Desde que en noviembre del año pasado se anunciase en el Re:invent 2017 que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.">
 <meta name="keywords" content="kubernetes,aws,devops">
 <meta property="og:type" content="article">
@@ -45,7 +45,7 @@ ga('send', 'pageview');
 
 
 </head>
-
+</html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -77,13 +77,13 @@ ga('send', 'pageview');
 </header>
 
 <div style="text-align:center; position:relative; top:-4.5rem;background-color:white;border-radius:9rem;width:9rem;margin:0 auto; margin-bottom:-6rem;">
-  <a href="/"><img style="width:9rem;" src="/img/logo-original.png" /></a>
+  <a href="/"><img style="width:9rem;" src="/img/logo-original.png"></a>
 </div>
 
           
       <div class="outer">              
         <section id="main">
-          <article id="post-EKS-ya-esta-aqui" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-EKS-ya-esta-aqui" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/06/07/EKS-ya-esta-aqui/" class="article-date">
   <time datetime="2018-06-06T22:00:00.000Z" itemprop="datePublished">07/06/2018</time>
@@ -105,24 +105,24 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Desde que en noviembre del año pasado se anunciase en el <a href="https://aws.amazon.com/es/new/reinvent/" target="_blank" rel="external">Re:invent 2017</a> que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.</p>
+        <p>Desde que en noviembre del año pasado se anunciase en el <a href="https://aws.amazon.com/es/new/reinvent/" target="_blank" rel="noopener">Re:invent 2017</a> que AWS iba a tener un servicio de Kubernetes (K8s) administrado, estábamos esperando esta noticia.</p>
  <a id="more"></a>
-<p>Aunque hace ya tiempo que Google Cloud tiene <a href="https://cloud.google.com/kubernetes-engine/" target="_blank" rel="external">K8s administrado</a>, es una buena noticia que Amazon se haya animado a dar el paso.</p>
+<p>Aunque hace ya tiempo que Google Cloud tiene <a href="https://cloud.google.com/kubernetes-engine/" target="_blank" rel="noopener">K8s administrado</a>, es una buena noticia que Amazon se haya animado a dar el paso.</p>
 <p>Por un lado, que empresas como Docker y Amazon hayan decidido dar soporte a Kubernetes, siendo que ya tienen sus respectivos sistemas de orquestación y despliegue de contenedores (Docker Swarm y ECS, respectivamente) no deja lugar a dudas de quién está ganando la batalla.</p>
-<p>Por otro, AWS, a su vez, es el <a href="https://www.rightscale.com/blog/cloud-industry-insights/cloud-computing-trends-2018-state-cloud-survey" target="_blank" rel="external">proveedor de Cloud más utilizado</a>. Siendo usuario de AWS, tener que gestionar Kubernetes uno mismo o usar 2 proveedores de Cloud, era un problema.</p>
+<p>Por otro, AWS, a su vez, es el <a href="https://www.rightscale.com/blog/cloud-industry-insights/cloud-computing-trends-2018-state-cloud-survey" target="_blank" rel="noopener">proveedor de Cloud más utilizado</a>. Siendo usuario de AWS, tener que gestionar Kubernetes uno mismo o usar 2 proveedores de Cloud, era un problema.</p>
 <h2 id="Primeras-impresiones"><a href="#Primeras-impresiones" class="headerlink" title="Primeras impresiones"></a>Primeras impresiones</h2><p>Dicho esto, esperemos que esta noticia sea el primer paso de lo que debe venir. Aunque este sistema tiene muchas ventajas, como la integración de los roles IAM con la seguridad de Kubernetes y la gestión automática de los nodos master, todavía echamos a faltar más transparencia en la gestión.</p>
-<p>Si te animas a seguir el <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html" target="_blank" rel="external"><em>Getting Started</em></a> que han preparado verás que, aunque es bastante sencillo seguir los pasos, la sensación es que hay que realizar demasiadas acciones para lo que debería ser un servicio gestionado. Por ejemplo, esperamos que en un futuro no sea necesario crear instancias EC2 para poder tener un clúster de Kubernetes funcionando, que sea transparente para el usuario.</p>
+<p>Si te animas a seguir el <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html" target="_blank" rel="noopener"><em>Getting Started</em></a> que han preparado verás que, aunque es bastante sencillo seguir los pasos, la sensación es que hay que realizar demasiadas acciones para lo que debería ser un servicio gestionado. Por ejemplo, esperamos que en un futuro no sea necesario crear instancias EC2 para poder tener un clúster de Kubernetes funcionando, que sea transparente para el usuario.</p>
 <p>Respecto al precio, tener que gestionar máquinas EC2 fuera de lo que es la creación del clúster tiene un impacto negativo en el precio. Además del cargo por la creación y uso del clúster (0,20$/hora) debemos sumarle los cargos habituales por el uso de máquinas EC2.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusión"></a>Conclusión</h2><p>Aunque para los usuarios de AWS y Kubernetes estamos ante una gran noticia, queda mucho camino por recorrer. Probablemente la ya anunciada futura integración con Fargate fuerce a Amazon a hacer que EKS sea más serverless. Lo que es seguro es que, que el gigante se haya unido a la amplia comunidad de K8s, dará un empujón al proyecto.</p>
 
       
     </div>
     <footer class="article-footer">
-      <img class="article-author-avatar" src="/img/jaime-twitter.jpg" />    
+      <img class="article-author-avatar" src="/img/jaime-twitter.jpg">    
       <a href="https://twitter.com/jaimeperera" class="article-author-name">Jaime Perera</a>      
       <span class="article-author-separator">&nbsp;</span>
 
-      <a data-url="http://programmeratwork.com/2018/06/07/EKS-ya-esta-aqui/" data-id="cjq9z0bhf000o8v1mvixy2m64" class="article-share-link">Comparte</a>
+      <a data-url="http://programmeratwork.com/2018/06/07/EKS-ya-esta-aqui/" data-id="cjq9zpqgd000fe91mfau6wu75" class="article-share-link">Comparte</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aws/">aws</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/devops/">devops</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
