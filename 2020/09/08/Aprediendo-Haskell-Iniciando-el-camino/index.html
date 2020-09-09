@@ -6,18 +6,18 @@
   <title>Aprediendo Haskell: Iniciando el camino | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
-  <meta name="description" content="Aunque tus skills, los lenguajes que usas y las herramientas que conoces, disten mucho de permitirte utilizar Haskell en producción, siempre he pensado que enfrentarse a nuevos paradigmas es como poc">
+  <meta name="description" content="Aunque tus skills, los lenguajes que usas y las herramientas que conoces sean la antítesis de Haskell y la programación funcional, siempre he pensado que enfrentarse a nuevos paradigmas es, como poco">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Aprediendo Haskell: Iniciando el camino">
 <meta property="og:url" content="http://programmeratwork.com/2020/09/08/Aprediendo-Haskell-Iniciando-el-camino/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Aunque tus skills, los lenguajes que usas y las herramientas que conoces, disten mucho de permitirte utilizar Haskell en producción, siempre he pensado que enfrentarse a nuevos paradigmas es como poc">
+<meta property="og:description" content="Aunque tus skills, los lenguajes que usas y las herramientas que conoces sean la antítesis de Haskell y la programación funcional, siempre he pensado que enfrentarse a nuevos paradigmas es, como poco">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="http://programmeratwork.com/img/haskell-curve.png">
 <meta property="og:image" content="http://programmeratwork.com/img/practical-haskell.jpg">
 <meta property="og:image" content="http://programmeratwork.com/img/libro-elefante.jpg">
 <meta property="article:published_time" content="2020-09-07T22:00:00.000Z">
-<meta property="article:modified_time" content="2020-09-09T16:20:36.988Z">
+<meta property="article:modified_time" content="2020-09-09T16:43:24.117Z">
 <meta property="article:tag" content="programming">
 <meta property="article:tag" content="languages">
 <meta property="article:tag" content="haskell">
@@ -113,7 +113,7 @@ ga('send', 'pageview');
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/img/haskell-curve.png"></p>
-<p>Aunque tus skills, los lenguajes que usas y las herramientas que conoces, disten mucho de permitirte utilizar Haskell en producción, siempre he pensado que enfrentarse a nuevos paradigmas es como poco un ejercicio mental excelente.</p>
+<p>Aunque tus skills, los lenguajes que usas y las herramientas que conoces sean la antítesis de Haskell y la programación funcional, siempre he pensado que enfrentarse a nuevos paradigmas es, como poco, un ejercicio mental excelente que acaba reportando benificios a largo plazo.</p>
 <a id="more"></a>
 
 <p>La programación funcional nos obliga a afrontar los problemas desde una perspectiva distinta, con otros patrones de uso, con otras estrategías y con tipos y operadores muy distintos a los de la programación orientada a objetos. Aunque puedas pensar que es una pérdida de tiempo y que no lo podrás aplicar, cada vez más los lenguajes modernos están absorbiendo más y más artificios funcionales, por lo que conocerlos y practicarlos en un lenguaje funcional puro como Haskell te puede ayudar a ir amoblando tu cabeza:</p>
@@ -125,18 +125,17 @@ ga('send', 'pageview');
 <h1 id="Arranque-del-grupo-de-estudio"><a href="#Arranque-del-grupo-de-estudio" class="headerlink" title="Arranque del grupo de estudio"></a>Arranque del grupo de estudio</h1><p>Los grupos de estudio son grupos de personas con un interés común que, mediante reuniones periódicas (semanales en nuestro caso), intentan aprender juntos estudiando y practicando con los mismo materiales al mismo tiempo.</p>
 <p>En nuestro caso somos de 6 a 8 personas y hemos comenzado inicialmente por aprender la sintaxis del lenguaje leyendo el libro <a target="_blank" rel="noopener" href="https://www.apress.com/gp/book/9781484244791">Practical Haskell</a> de <a target="_blank" rel="noopener" href="https://twitter.com/trupill">Alejandro Serrano</a>:</p>
 <p><img src="/img/practical-haskell.jpg" alt="Practical Haskell"></p>
-<p>En los primeros capítulos de este libro, se completa un recorrido por los aspectos más básicos del lenguaje como definiciones de tipos, funciones, listas, etc y, aunque son conceptos sencillos inicialmente, pronto se complementan con otros conceptos más avanzados que permiten hacernos una idea de cómo se utilizan en el mundo real. Después de varias semanas y con un poco más de perspectiva, si arrancas de 0 en Haskell quizá te interese mirarte primero el <a target="_blank" rel="noopener" href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good!</a> aka “el libro del elefante”, ya que va te guía por este proceso más poco a poco y ofrece más ejemplos sencillos de cada uno de los conceptos:</p>
+<p>En los primeros capítulos de este libro, se completa un recorrido por los aspectos más básicos del lenguaje como definiciones de tipos, funciones, listas, etc y, aunque son conceptos sencillos inicialmente, pronto se complementan con otros conceptos más avanzados que permiten hacernos una idea de cómo se utilizan en el mundo real. Después de varias semanas y con un poco más de perspectiva, creo que si arrancas de 0 en Haskell, quizá te interese comenzar primero por el <a target="_blank" rel="noopener" href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good!</a> aka “el libro del elefante”, ya que lleva un ritmos más pausado y ofrece más ejemplos sencillos de cada uno de los conceptos:</p>
 <p><img src="/img/libro-elefante.jpg" alt="Learn You a Haskell for Great Good!"></p>
-<p>Trabajando sobre los primeros capítulos del <a target="_blank" rel="noopener" href="https://www.apress.com/gp/book/9781484244791">Practical Haskell</a>, uno de los primeros puntos es poder lanzar el intérprete de Haskell y comenzar a probar los ejemplos y construcciones que vamos aprendiendo. Para ello, mi recomendación es instalar <a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">Stack</a> directamente y utilizar el comando <code>stack repl</code> que incorpora para abrir el REPL. De esta manera, el propio <a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">Stack</a> será el reponsable de descargar la última versión del compilador y de gestionar el entorno, proyectos, testing, etc.</p>
-<p>Para seguir el proceso de instalación, tienes más info en:</p>
-<p><a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">https://docs.haskellstack.org/en/stable/README/</a></p>
-<p>Una vez en el REPL, son de utiliadad para comenzar a probar cosas comandos como:</p>
+<p>Trabajando sobre los primeros capítulos del <a target="_blank" rel="noopener" href="https://www.apress.com/gp/book/9781484244791">Practical Haskell</a>, uno de los primeros puntos es poder lanzar el intérprete de Haskell y comenzar a probar los ejemplos y construcciones que vamos aprendiendo. Para ello, mi recomendación es instalar <a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">Stack</a> directamente y utilizar el comando <code>stack repl</code> para abrir el REPL. De esta manera, el propio <a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">Stack</a> será el reponsable de descargar la última versión del compilador y de gestionar el entorno, proyectos, testing, etc.</p>
+<p>Para más detalles acerca del proceso de instalación, sigue la <a target="_blank" rel="noopener" href="https://docs.haskellstack.org/en/stable/README/">documentación oficial de Stack</a>.</p>
+<p>Una vez ya en el REPL, son de utilidad para comenzar a probar cosas comandos como:</p>
 <ul>
 <li><strong>:load</strong>. Carga código Haskell desde ficheros <code>.hs</code> que tengamos en el sistema de ficheros.</li>
-<li><strong>:type</strong>. Muestra el tipo de una valor.</li>
+<li><strong>:type</strong>. Muestra el tipo de una valor o expresión.</li>
 <li><strong>:info</strong>. Muestra información adicional sobre la definición que le pasamos.</li>
 </ul>
-<p>Aunque que todo es muy básico todavía, poco a poco iremos adentrándonos en los conceptos y sintaxis del lenguaje :)</p>
+<p>Aunque todo es muy básico todavía, poco a poco iremos adentrándonos en los conceptos y sintaxis del lenguaje :)</p>
 
       
     </div>
@@ -145,7 +144,7 @@ ga('send', 'pageview');
       <a target="_blank" rel="noopener" href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
       <span class="article-author-separator">&nbsp;</span>
 
-      <a data-url="http://programmeratwork.com/2020/09/08/Aprediendo-Haskell-Iniciando-el-camino/" data-id="ckevlbkzo000bdx9rgj7343m9" class="article-share-link">Comparte</a>
+      <a data-url="http://programmeratwork.com/2020/09/08/Aprediendo-Haskell-Iniciando-el-camino/" data-id="ckevm3vcr000bhm9r3rsxhdx1" class="article-share-link">Comparte</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/haskell/" rel="tag">haskell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/languages/" rel="tag">languages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li></ul>
