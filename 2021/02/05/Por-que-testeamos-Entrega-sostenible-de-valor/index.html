@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Implementando una cultura de testing: Evaluando el contexto | </title>
+  <title>¿Por qué testeamos? Entrega sostenible de valor | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="//cdn-static-1.medium.com/_/fp/css/fonts-latin-base.141WxxXgxGxNcfeza73H7Q.css" />
-  <meta name="description" content="Antes de poder evaluar el impacto real que pueden tener la adopción de prácticas ágiles como testing, refactoring o clean code a nivel de la organización, es interesante considerar en qué punto estam">
+  <meta name="description" content="Puede parecer que hacer testing tiene como objetivo principal reducir el número de bugs y, aunque este es un efecto colateral muy interesante que tiene esta practica, en mi opinión no es ni de lejos">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Implementando una cultura de testing: Evaluando el contexto">
-<meta property="og:url" content="http://programmeratwork.com/2021/01/05/Implementando-una-cultura-de-testing-Evaluando-el-contexto/index.html">
+<meta property="og:title" content="¿Por qué testeamos? Entrega sostenible de valor">
+<meta property="og:url" content="http://programmeratwork.com/2021/02/05/Por-que-testeamos-Entrega-sostenible-de-valor/index.html">
 <meta property="og:site_name">
-<meta property="og:description" content="Antes de poder evaluar el impacto real que pueden tener la adopción de prácticas ágiles como testing, refactoring o clean code a nivel de la organización, es interesante considerar en qué punto estam">
+<meta property="og:description" content="Puede parecer que hacer testing tiene como objetivo principal reducir el número de bugs y, aunque este es un efecto colateral muy interesante que tiene esta practica, en mi opinión no es ni de lejos">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="http://programmeratwork.com/img/testing.jpg">
-<meta property="og:image" content="http://programmeratwork.com/img/44135420.jpg">
+<meta property="og:image" content="http://programmeratwork.com/img/the-road-815297_1920.jpg">
 <meta property="og:image" content="http://programmeratwork.com/img/35747076._SY475_.jpg">
-<meta property="og:image" content="http://programmeratwork.com/img/4268826.jpg">
-<meta property="article:published_time" content="2021-01-04T23:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-08T12:53:12.359Z">
+<meta property="og:image" content="http://programmeratwork.com/img/1069827.jpg">
+<meta property="og:image" content="http://programmeratwork.com/img/8686650.jpg">
+<meta property="article:published_time" content="2021-02-04T23:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-04T15:29:52.437Z">
 <meta property="article:tag" content="testing">
 <meta property="article:tag" content="programming">
 <meta property="article:tag" content="mindset">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://programmeratwork.com/img/testing.jpg">
+<meta name="twitter:image" content="http://programmeratwork.com/img/the-road-815297_1920.jpg">
 <meta name="twitter:creator" content="@https:&#x2F;&#x2F;twitter.com&#x2F;programmeratwk">
   
     <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
@@ -91,10 +91,10 @@ ga('send', 'pageview');
           
       <div class="outer">              
         <section id="main">
-          <article id="post-Implementando-una-cultura-de-testing-Evaluando-el-contexto" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-Por-que-testeamos-Entrega-sostenible-de-valor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/01/05/Implementando-una-cultura-de-testing-Evaluando-el-contexto/" class="article-date">
-  <time datetime="2021-01-04T23:00:00.000Z" itemprop="datePublished">05/01/2021</time>
+    <a href="/2021/02/05/Por-que-testeamos-Entrega-sostenible-de-valor/" class="article-date">
+  <time datetime="2021-02-04T23:00:00.000Z" itemprop="datePublished">05/02/2021</time>
 </a>
     
   </div>
@@ -106,7 +106,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Implementando una cultura de testing: Evaluando el contexto
+      ¿Por qué testeamos? Entrega sostenible de valor
     </h1>
   
 
@@ -114,39 +114,35 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/testing.jpg"></p>
-<p>Antes de poder evaluar el impacto real que pueden tener la adopción de prácticas ágiles como testing, refactoring o clean code a nivel de la organización, es interesante considerar en qué punto estamos a nivel de producto y equipo. En muchas ocasiones, ignorar el contexto puede llevarnos al fracaso y a la pérdida de confianza en estas prácticas que tan beneficiosas son cuando se aplican de forma correcta.</p>
-<p>Veamos pues cuando puede ser un buen momento para comenzar a hacer testing y qué condicionantes debemos tener en cuenta.</p>
+        <p><img src="/img/the-road-815297_1920.jpg"></p>
+<p>Puede parecer que hacer testing tiene como objetivo principal reducir el número de bugs y, aunque este es un efecto colateral muy interesante que tiene esta practica, en mi opinión no es ni de lejos el que más valor nos puede aportar.</p>
+<p>Razonar más y mejor sobre el problema es sin duda el superpoder que nos garantiza hacer testing a distintos niveles, siendo el diseño de nuestro software el más beneficiado al final del proceso. Por supuesto, si el diseño de nuestro código es mejor, será más sencillo de entender y, como decía <a target="_blank" rel="noopener" href="https://martinfowler.com/">Martin Fowler</a>, más barato de modificar. Y es que en esta última afirmación podemos ver de una forma más clara la confluencia entre objetivos técnicos y objetivos de negocio.</p>
+<p>En este y próximos artículos analizaremos las motivaciones que surgen en esta frontera tan difícil de negociar y cómo puede resultar mucho más sencillo hacer visible su valor si estos objetivos se mantienen alineados con los de negocio. Pero, vayamos poco a poco y centrémonos hoy en analizar cómo testing nos puede ayudar a conseguir que nuestro flujo de entrega sea más sostenible.</p>
 <a id="more"></a>
 
-<h2 id="Estado-del-producto"><a href="#Estado-del-producto" class="headerlink" title="Estado del producto"></a>Estado del producto</h2><p>Si nos centramos inicialmente en el producto, podemos identificar dos situaciones fundamentales: ¿Estamos descubriendo producto o, por el contrario, estamos en un proceso de delivery continuo de funcionalidad?</p>
-<p>Si estamos descubriendo producto, el objetivo principal será el de validar una hipótesis de negocio que nos confirme si vamos por la vía correcta o no. Esta suele ser una situación en la que probablemente iniciaremos el proyecto desde cero (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Greenfield_project">green field</a>) y en la que se pueden llegar a dar, al menos, dos escenarios posibles:</p>
+<h1 id="Sostenibilidad-en-el-tiempo"><a href="#Sostenibilidad-en-el-tiempo" class="headerlink" title="Sostenibilidad en el tiempo"></a>Sostenibilidad en el tiempo</h1><p>Partiendo del <a target="_blank" rel="noopener" href="https://agilemanifesto.org/">Agile Manifesto</a>, podemos ver cómo el software funcionando es uno de los aspectos que más se acaban valorando: <em>Working software over comprehensive documentation</em>. En definitiva, el software entregado y funcionando es el que permite recoger feedback y evaluar hipótesis de negocio, así que cuanto antes podamos tenerlo en manos del usuario, mejor que mejor.</p>
+<p>En este sentido, una prioridad para el equipo y, por supuesto, para el negocio, será la entrega rápida y sostenida de valor. No hay nada que nos pueda dar más confianza que ver que el producto llega al usuario final a buen ritmo y sin errores (algo compljeo de conseguir y de hacer sostenible en el tiempo). El problema principal radica en que no es posible alcanzar esta confianza hasta conseguir tener un producto maduro y capaz de adaptarse a los cambios que se van produciendo.</p>
+<p>Evidentemente, buscamos sostenibilidad ya que esto no va de acelerar a tope hasta quemar al equipo. De hecho, si el entorno y el proceso presionan demasiado al equipo, los resultados que obtendremos serán justo los contrarios a los esperados.</p>
+<h1 id="Entrega-de-las-unidades-de-valor-mas-prioritarias-lo-antes-posible"><a href="#Entrega-de-las-unidades-de-valor-mas-prioritarias-lo-antes-posible" class="headerlink" title="Entrega de las unidades de valor más prioritarias lo antes posible"></a>Entrega de las unidades de valor más prioritarias lo antes posible</h1><p>Un punto a examinar antes de ver cómo mejorar este flujo de entrega, es cómo colaboramos como equipo para entregar el valor producido. Si arrancamos un sprint y hay una historia de usuario que es la más prioritaria, todo el equipo debería poner su máximo empeño por cerrarla lo antes posible. <strong>Todos absolutamente</strong>. Si resulta que llega un punto en que en lugar de aportar, nos estamos molestando, pues el resto de integrantes del equipo comenzarán con la segunda historia de usuario más prioritaria, de forma que si en algún momento pueden ayudar en algo a finalizar la primera, lo harán sin dudarlo. La máxima es siempre: <strong>El valor más prioritario es el primero en ser entregado</strong>.</p>
+<p>Por contra, una practica muy extendida es asignarse cada uno una historia de usuario y comenzar a trabajar en ella de forma autónoma o, incluso peor, tener muchas de ellas pre-asignadas al principio del sprint pensando en la persona concreta que se encargará de ella… Todo esto frena nuestra capacidad de entrega del valor prioritario y aumenta el tiempo total (lead time) de entrega de cada unidad de valor.</p>
+<h1 id="Testing-en-nuestro-flujo-de-entrega"><a href="#Testing-en-nuestro-flujo-de-entrega" class="headerlink" title="Testing en nuestro flujo de entrega"></a>Testing en nuestro flujo de entrega</h1><p>Por último, me gustaría hablar de cómo, si integramos testing en nuestro proceso, nos ayudará a tener más control sobre nuestro código, aunque es interesante tener presentes algunos otros aspectos involucrados como:</p>
 <ul>
-<li>Construir un <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a> lo más rápidamente posible para validar la idea de negocio y luego <strong>tirarlo a la basura</strong> para continuar con el desarrollo del producto real. De esta forma se desarrolla la mínima cantidad de software posible y el coste es menor, dejando temporalmente de lado principios de diseño y prácticas técnicas como testing, refactoring y demás. Es importante remarcar la parte de <em>luego tirarlo a la basura</em>, ya que negocio no tiene que poder pensar que es factible seguir construyendo sobre la base actual.</li>
-<li>Construir un producto nuevo, pero con una mentalidad más continuista, de forma que, aunque el avance sea más lento al principio, el producto sea ya el definitivo desde el minuto cero.</li>
+<li><strong>Confianza en la calidad del código</strong> y, en consecuencia, confianza en las estrategías de testing y en la suite que defiende el valor entregado. Un punto fundamental que sólo es posible alcanzar con la madurez del equipo y con la mejora continua de sus prácticas técnicas (aka extreme programming).</li>
+<li><strong>Independencia en las unidades de valor entregadas</strong>. Cada funcionalidad sólo es capaz de llegar a producción lo antes posible si es independiente del resto de historias de usuario y se puede desplegar de forma autónoma. Algunos aspectos clave aquí van desde un desarrollo efectivo del producto y de la definición de su backlog, hasta el uso de técnicas avanzadas de ejecución condicional de código en producción como en el caso de los <a target="_blank" rel="noopener" href="https://martinfowler.com/articles/feature-toggles.html">Feature Flags o Feature Toggles</a>.</li>
+<li><strong>Confianza en el despliegue y en su automatización</strong>. Aunque hay mucho que rascar aquí, quizá el más notable puede ser el relativo a la adopción de DevOps y de las prácticas necesarias de automatización a nivel cultural tanto en el equipo com al resto de niveles de la organización. De forma más contextual a lo que comentamos, podría suponer que cualquier debería de ser capaz de subir una versión a producción y este proceso se debería de poder realizar tantas veces al día como fuera necesario. Algunas referencias fundamentales aquí pueden ser <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/35747076-accelerate">Accelerate: Building and Scaling High-Performing Technology Organizations</a> o <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/1069827.Release_It_">Release It!: Design and Deploy Production-Ready Sofware</a>.</li>
+<li><strong>Aplicación de las estrategias necesarias de Continuous Integration y Continuous Delivery (CI/CD)</strong> para la definición de un pipeline unificado y consistente (<a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/8686650-continuous-delivery">Continuous Delivery: Reliable Software Releases Throught Build, Test, and Deployment Automation</a>).</li>
 </ul>
-<p>En el segundo escenario es también muy probable que tengamos que iterar repetidamente sobre el dominio, ya que las abstracciones que identifiquemos estarán todavía sujetas a cambios al no estar del todo bien definidas (identificación del <a target="_blank" rel="noopener" href="https://martinfowler.com/bliki/UbiquitousLanguage.html">lenguaje ubicuo</a>). En este contexto es donde nos puede resultar de gran ayuda la dimensión del testing como herramienta de diseño, ya que los continuos cambios irán metiendo cada vez más presión al diseño y a la arquitectura y tendremos que ser capaces de refactorizarlos. En esta situación, sería interesante que el equipo ya pudiera tener cierta soltura con testing y refactoring para dar soporte a este proceso.</p>
-<blockquote>
-<p><em>Iniciar un proyecto nuevo usando testing, refactoring y TDD es un gran propósito, pero si todavía no contamos con las habilidades necesarias, se puede acabar generando mucha frustración en el equipo.</em></p>
-</blockquote>
-<p>Si por el contrario, el producto ya se encuentra en una fase más estable de definición en la que nos estamos centrando en conseguir un delivery rápido y sostenible, testing nos puede ayudar a ir ganando confianza en la calidad y mantenibilidad del producto, de forma que el código pueda llegar a producción en las mejores condiciones posibles.</p>
-<h2 id="Estado-del-equipo"><a href="#Estado-del-equipo" class="headerlink" title="Estado del equipo"></a>Estado del equipo</h2><p>En otro orden de cosas, el estado actual del equipo puede ser todavía más relevante, ya que asimilar ciertas prácticas puede requerir de un mindset y unos conocimientos mínimos previos a la hora de entender su objetivo principal o sus valores.</p>
-<p>En este sentido, hay que tener cuidado en entornos con equipos en pleno crecimiento, ya que los consensos alcanzados por el equipo pueden estar todavía formándose. Así pues, lo ideal sería contar con un background mínimo de refactoring y clean code antes de comenzar con testing, especialmente si estamos en un entorno con mucho legacy en el que a medida que creamos estructuras para sustentar el cambio mediante tests, vamos refactorizando el código que nos encontramos.</p>
-<p>Por último y como sucede con muchos de los valores que introduce la cultura DevOps a distintos niveles de la organización, el estado de madurez de la automatización de los procesos involucrados, es decir, pipeline de construcción y CI/CD (continuous integration + continuous delivery), va a ayudar mucho a que la integración de nuestros tests en el proceso completo de entrega de valor. Si estos procesos o pipelines no existen, será necesario ir creándolos con el fin de que el equipo en general se pueda beneficiar de la simplicidad e integración que ofrecen (evitando que cada uno haga la guerra por su parte).</p>
-<blockquote>
-<p><em>El concepto de Walking Skeleton del <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Growing Object-Oriented Software, Guided by Tests</a> nos ofrece una oportunidad de preparar el pipeline de construcción, testing y despliegue con la primera historia de usuario de la aplicación.</em></p>
-</blockquote>
-<p>Para profundizar en cómo algunos de estos matices que afectan a los equipos o al producto pueden afectar también al proceso de implantación de prácticas técnicas como testing, os recomiendo profundizar con dos grandes libros como son <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/44135420-team-topologies">Team topologies</a> y <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/35747076-accelerate">Accelerate: Building and Scaling High-Performing Technology Organizations</a>, los cuales nos ayudarán a comprender mejor cómo organizar nuestro equipos y nuestros flujos de trabajo.</p>
+<p>En defintiva, muchos aspectos culturales y técnicos que condicionan nuestra forma de afrontar el producto y de cómo este será percibido por negocio y por el usuario final. Todos sumandos y correctamente alineados, incrementarán nuestras posibilidades de conseguir un flujo de entrega más rápido y sostenible en el tiempo.</p>
 <div style="text-align: center;">
-  <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/44135420-team-topologies">
-    <img style="height: 320px; display: inline;" src="/img/44135420.jpg" />
-  </a>
   <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/35747076-accelerate">
     <img style="height: 320px; display: inline;" src="/img/35747076._SY475_.jpg" />
   </a>
-  <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">
-    <img style="height: 320px; display: inline;" src="/img/4268826.jpg" />
-  </a>  
+  <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/1069827.Release_It_">
+    <img style="height: 320px; display: inline;" src="/img/1069827.jpg" />
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.goodreads.com/book/show/8686650-continuous-delivery">
+    <img style="height: 320px; display: inline;" src="/img/8686650.jpg" />
+  </a>
 </div>
 
       
@@ -156,7 +152,7 @@ ga('send', 'pageview');
       <a target="_blank" rel="noopener" href="https://twitter.com/borillo" class="article-author-name">Ricardo Borillo</a>      
       <span class="article-author-separator">&nbsp;</span>
 
-      <a data-url="http://programmeratwork.com/2021/01/05/Implementando-una-cultura-de-testing-Evaluando-el-contexto/" data-id="ckkr0n9yd000qhw9raxdi3o2e" class="article-share-link">Comparte</a>
+      <a data-url="http://programmeratwork.com/2021/02/05/Por-que-testeamos-Entrega-sostenible-de-valor/" data-id="ckkr0n9yg000vhw9r672n7o65" class="article-share-link">Comparte</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mindset/" rel="tag">mindset</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/programming/" rel="tag">programming</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/testing/" rel="tag">testing</a></li></ul>
@@ -167,19 +163,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/2021/02/05/Por-que-testeamos-Entrega-sostenible-de-valor/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Siguiente</strong>
-      <div class="article-nav-title">
-        
-          ¿Por qué testeamos? Entrega sostenible de valor
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/09/08/Aprediendo-Haskell-Iniciando-el-camino/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/01/05/Implementando-una-cultura-de-testing-Evaluando-el-contexto/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Anterior</strong>
-      <div class="article-nav-title">Aprediendo Haskell: Iniciando el camino</div>
+      <div class="article-nav-title">Implementando una cultura de testing: Evaluando el contexto</div>
     </a>
   
 </nav>
